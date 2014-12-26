@@ -58,6 +58,22 @@ public class SelectTest {
   }
 
   @org.junit.Test
+  public void selectMultiJoinTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .from("mytable")
+        .join("secondtable")
+        .on("mytable.id = secondtable.id")
+        .join("thirdtable")
+        .on("secondtable.id = thirdtable.id")
+        .where("id = 1")
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` JOIN `secondtable` ON mytable.id = secondtable.id " +
+        "JOIN `thirdtable` ON secondtable.id = thirdtable.id WHERE id = 1");
+  }  
+
+  @org.junit.Test
   public void selectAndTest() {
     String query = SQLiteQueryBuilder
         .select()
