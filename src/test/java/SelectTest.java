@@ -96,4 +96,29 @@ public class SelectTest {
 
     assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 LIMIT 5");
   }
+
+  @org.junit.Test
+  public void selectOrderByTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .from("mytable")
+        .orderBy("rank")
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` ORDER BY rank");
+  }
+
+  @org.junit.Test
+  public void selectOrderByAdvancedTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .from("mytable")
+        .where("id = 1")
+        .orderBy("rank")
+        .desc()
+        .limit(10, 5)
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
+  }  
 }

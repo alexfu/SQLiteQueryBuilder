@@ -1,9 +1,6 @@
 package com.alexfu.sqlitequerybuilder.impl;
 
-import com.alexfu.sqlitequerybuilder.QueryBuilder;
-import com.alexfu.sqlitequerybuilder.SelectAnd;
-import com.alexfu.sqlitequerybuilder.SelectLimit;
-import com.alexfu.sqlitequerybuilder.SelectWhere;
+import com.alexfu.sqlitequerybuilder.*;
 
 public class SelectWhereImpl extends QueryBuilder implements SelectWhere {
   public SelectWhereImpl(String condition) {
@@ -18,5 +15,9 @@ public class SelectWhereImpl extends QueryBuilder implements SelectWhere {
   @Override
   public SelectLimit limit(int limit) {
     return new SelectLimitImpl(limit);
+  }
+
+  public SelectOrderBy orderBy(String orderBy) {
+    return new SelectOrderByImpl(orderBy);
   }
 }

@@ -1,9 +1,6 @@
 package com.alexfu.sqlitequerybuilder.impl;
 
-import com.alexfu.sqlitequerybuilder.QueryBuilder;
-import com.alexfu.sqlitequerybuilder.SelectFrom;
-import com.alexfu.sqlitequerybuilder.SelectJoin;
-import com.alexfu.sqlitequerybuilder.SelectWhere;
+import com.alexfu.sqlitequerybuilder.*;
 
 import static com.alexfu.sqlitequerybuilder.utils.SQLUtils.wrap;
 
@@ -21,5 +18,9 @@ public class SelectFromImpl extends QueryBuilder implements SelectFrom {
   @Override
   public SelectWhere where(String condition) {
     return new SelectWhereImpl(condition);
+  }
+
+  public SelectOrderBy orderBy(String orderBy) {
+    return new SelectOrderByImpl(orderBy);
   }
 }
