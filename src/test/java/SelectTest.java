@@ -10,7 +10,7 @@ public class SelectTest {
         .from("mytable")
         .toString();
 
-    assertEquals(query, "SELECT `column` FROM `mytable`");
+    assertEquals(query, "SELECT column FROM `mytable`");
   }
 
   @org.junit.Test
@@ -20,7 +20,7 @@ public class SelectTest {
         .from("mytable")
         .toString();
 
-    assertEquals(query, "SELECT `column1`,`column2`,`column3` FROM `mytable`");
+    assertEquals(query, "SELECT column1,column2,column3 FROM `mytable`");
   }
 
   @org.junit.Test
@@ -41,7 +41,7 @@ public class SelectTest {
         .where("id = 1")
         .toString();
 
-    assertEquals(query, "SELECT `column` FROM `mytable` WHERE id = 1");
+    assertEquals(query, "SELECT column FROM `mytable` WHERE id = 1");
   }
 
   @org.junit.Test

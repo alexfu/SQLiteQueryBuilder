@@ -17,7 +17,7 @@ public class SelectImpl extends QueryBuilder implements Select {
     getBuilder().setLength(0);
     getBuilder().append("SELECT ");
     for (int i = 0; i < fields.length; i++) {
-      getBuilder().append(wrap(fields[i]));
+      getBuilder().append(fields[i]);
       if (i < fields.length-1) {
         getBuilder().append(",");
       } else {
