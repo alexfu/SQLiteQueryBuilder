@@ -1,6 +1,8 @@
 # SQLiteQueryBuilder
 This project is aimed at providing a simple API to build SQLite query statements. This library does nothing but build statements; it's not an ORM. The API syntax is inspired from the jOOQ library.
 
+Currently, SQLiteQueryBuilder is under active development so you may find some features missing. If this is the case, please file an issue or open a pull request.
+
 ## Motivation
 Although this project is written in Java and bears no dependencies to external frameworks (so far), it is/was developed specifically to be used on the Android platform. There are a few reasons why I started this project...
 
