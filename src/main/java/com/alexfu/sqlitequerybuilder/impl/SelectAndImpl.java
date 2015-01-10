@@ -1,9 +1,6 @@
 package com.alexfu.sqlitequerybuilder.impl;
 
-import com.alexfu.sqlitequerybuilder.QueryBuilder;
-import com.alexfu.sqlitequerybuilder.SelectAnd;
-import com.alexfu.sqlitequerybuilder.SelectLimit;
-import com.alexfu.sqlitequerybuilder.SelectOrderBy;
+import com.alexfu.sqlitequerybuilder.*;
 
 public class SelectAndImpl extends QueryBuilder implements SelectAnd {
   public SelectAndImpl(String condition) {
@@ -23,5 +20,9 @@ public class SelectAndImpl extends QueryBuilder implements SelectAnd {
 
   public SelectOrderBy orderBy(String orderBy) {
     return new SelectOrderByImpl(orderBy);
+  }
+  
+  public SelectGroupBy groupBy(String field) {
+    return new SelectGroupByImpl(field);
   }
 }

@@ -109,6 +109,17 @@ public class SelectTest {
   }
 
   @org.junit.Test
+  public void selectGroupByTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .from("mytable")
+        .groupBy("rank")
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` GROUP BY rank");
+  }
+
+  @org.junit.Test
   public void selectOrderByAdvancedTest() {
     String query = SQLiteQueryBuilder
         .select()

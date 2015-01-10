@@ -23,4 +23,8 @@ public class SelectFromImpl extends QueryBuilder implements SelectFrom {
   public SelectOrderBy orderBy(String orderBy) {
     return new SelectOrderByImpl(orderBy);
   }
+
+  public SelectGroupBy groupBy(String field) {
+    return new SelectGroupByImpl(field);
+  }
 }
