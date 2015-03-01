@@ -1,4 +1,5 @@
 import com.alexfu.sqlitequerybuilder.SQLiteQueryBuilder;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,7 +27,7 @@ public class SelectTest {
   @org.junit.Test
   public void starColumnSelectTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .toString();
 
@@ -47,7 +48,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectJoinTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .join("secondtable")
         .on("mytable.id = secondtable.id")
@@ -60,7 +61,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectMultiJoinTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .join("secondtable")
         .on("mytable.id = secondtable.id")
@@ -76,7 +77,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectAndTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .where("id = 1")
         .and("color = 'red'")
@@ -88,7 +89,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectLimitTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .where("id = 1")
         .limit(5)
@@ -100,7 +101,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectOrderByTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .orderBy("rank")
         .toString();
@@ -111,7 +112,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectGroupByTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .groupBy("rank")
         .toString();
@@ -122,7 +123,7 @@ public class SelectTest {
   @org.junit.Test
   public void selectOrderByAdvancedTest() {
     String query = SQLiteQueryBuilder
-        .select()
+        .select("*")
         .from("mytable")
         .where("id = 1")
         .orderBy("rank")
@@ -131,5 +132,27 @@ public class SelectTest {
         .toString();
 
     assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
-  }  
+  }
+  
+  @Test
+  public void selectDistinctTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .distinct("one", "two", "three")
+        .from("mytable")
+        .toString();
+    
+    assertEquals(query, "SELECT DISTINCT one,two,three FROM `mytable`");
+  }
+
+  @Test
+  public void selectAllTest() {
+    String query = SQLiteQueryBuilder
+        .select()
+        .all("one", "two", "three")
+        .from("mytable")
+        .toString();
+
+    assertEquals(query, "SELECT ALL one,two,three FROM `mytable`");
+  }
 }
