@@ -13,7 +13,7 @@ Although this project is written in Java and bears no dependencies to external f
 ## Usage
 ```java
 String sql = SQLiteQueryBuilder
-	.select()
+	.select("*")
 	.from("accounts")
 	.where("id = 1")
 	.toString();
