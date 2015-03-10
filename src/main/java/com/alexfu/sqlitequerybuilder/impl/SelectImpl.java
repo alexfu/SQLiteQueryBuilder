@@ -5,8 +5,6 @@ import com.alexfu.sqlitequerybuilder.Select;
 import com.alexfu.sqlitequerybuilder.SelectFrom;
 import com.alexfu.sqlitequerybuilder.SelectType;
 
-import static com.alexfu.sqlitequerybuilder.utils.SQLUtils.wrap;
-
 public class SelectImpl extends QueryBuilder implements Select {
 
   public SelectImpl() {
