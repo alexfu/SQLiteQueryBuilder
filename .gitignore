@@ -5,3 +5,6 @@
 # Gradle
 .gradle
 build
+/bin/
+*.classpath
+*.project
