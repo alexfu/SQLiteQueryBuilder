@@ -19,4 +19,23 @@ public class CreateTest {
 		assertEquals("Error: the actual query does not match the expected.", "CREATE TABLE myTable(column1 INT, column2 BIGINT)", query);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public final void testCreateTableWithException() {
+		// Arrange
+		String[] names = {"column3", "column4"};
+		ColumnType[] types = {ColumnType.MEDIUMINT};
+		
+		// Act
+		SQLiteQueryBuilder.createTable("myTable").column(names, types);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public final void testCreateTableWithNoColumn() {
+		// Arrange
+		String[] names = {};
+		ColumnType[] types = {ColumnType.MEDIUMINT};
+		
+		// Act
+		SQLiteQueryBuilder.createTable("myTable").column(names, types);
+	}
 }

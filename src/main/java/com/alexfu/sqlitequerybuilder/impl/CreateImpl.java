@@ -14,11 +14,16 @@ public class CreateImpl extends QueryBuilder implements Create {
 	 * 
 	 */
 	public CreateImpl(String table) {
+		getBuilder().setLength(0);
 		getBuilder().append("CREATE TABLE ").append(table);
 	}
 
 	@Override
 	public String column(String[] names, ColumnType[] types) {
+		if (names.length == 0 || types.length == 0) {
+			throw new IllegalArgumentException("At least one column should be defined.");
+		}
+		
 		if (names.length != types.length) {
 			throw new IllegalArgumentException("The number of column names is not equal to the number of column types.");
 		}
