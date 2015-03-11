@@ -1,4 +1,5 @@
-import com.alexfu.sqlitequerybuilder.SQLiteQueryBuilder;
+package com.alexfu.sqlitequerybuilder;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
