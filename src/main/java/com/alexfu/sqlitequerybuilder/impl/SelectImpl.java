@@ -4,6 +4,7 @@ import com.alexfu.sqlitequerybuilder.QueryBuilder;
 import com.alexfu.sqlitequerybuilder.Select;
 import com.alexfu.sqlitequerybuilder.SelectFrom;
 import com.alexfu.sqlitequerybuilder.SelectType;
+import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
 
 import static com.alexfu.sqlitequerybuilder.utils.SQLUtils.wrap;
 
@@ -16,15 +17,9 @@ public class SelectImpl extends QueryBuilder implements Select {
 
   public SelectImpl(String... fields) {
     getBuilder().setLength(0);
-    getBuilder().append("SELECT ");
-    for (int i = 0; i < fields.length; i++) {
-      getBuilder().append(fields[i]);
-      if (i < fields.length-1) {
-        getBuilder().append(",");
-      } else {
-        getBuilder().append(" ");
-      }
-    }
+    getBuilder().append("SELECT ")
+        .append(ArrayUtils.join(fields, ","))
+        .append(" ");
   }
 
   @Override
