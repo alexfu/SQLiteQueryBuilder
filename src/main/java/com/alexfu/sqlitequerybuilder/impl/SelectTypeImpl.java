@@ -7,16 +7,7 @@ import com.alexfu.sqlitequerybuilder.SelectType;
 public class SelectTypeImpl extends QueryBuilder implements SelectType {
   
   public enum Type {
-    DISTINCT, ALL;
-
-    @Override
-    public String toString() {
-      if (this == DISTINCT) {
-        return "DISTINCT";
-      } else {
-        return "ALL";
-      }
-    }
+    DISTINCT, ALL
   }
   
   public SelectTypeImpl(Type type, String... columns) {
