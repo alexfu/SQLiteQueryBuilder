@@ -7,4 +7,8 @@ package com.alexfu.sqlitequerybuilder;
 public interface Create {
 	
 	public String column(String[] names, ColumnType[] types);
+	
+	public Create column(ColumnDefinition definition);
+	
+	public Create end();
 }
