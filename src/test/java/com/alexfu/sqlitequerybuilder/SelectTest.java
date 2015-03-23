@@ -156,4 +156,16 @@ public class SelectTest {
 
     assertEquals(query, "SELECT ALL one,two,three FROM `mytable`");
   }
+
+  @Test
+  public void selectOrderByAsc() {
+    String query = SQLiteQueryBuilder
+        .select("*")
+        .from("mytable")
+        .orderBy("age")
+        .asc()
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` ORDER BY age ASC");
+  }
 }
