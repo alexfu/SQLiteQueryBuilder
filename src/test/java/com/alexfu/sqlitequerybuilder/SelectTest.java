@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SelectTest {
-  @org.junit.Test
+  @Test
   public void singleColumnSelectTest() {
     String query = SQLiteQueryBuilder
         .select("column")
@@ -15,7 +15,7 @@ public class SelectTest {
     assertEquals(query, "SELECT column FROM `mytable`");
   }
 
-  @org.junit.Test
+  @Test
   public void multiColumnSelectTest() {
     String query = SQLiteQueryBuilder.
         select("column1", "column2", "column3")
@@ -25,7 +25,7 @@ public class SelectTest {
     assertEquals(query, "SELECT column1,column2,column3 FROM `mytable`");
   }
 
-  @org.junit.Test
+  @Test
   public void starColumnSelectTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -35,7 +35,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable`");
   }
 
-  @org.junit.Test
+  @Test
   public void selectWhereTest() {
     String query = SQLiteQueryBuilder
         .select("column")
@@ -46,7 +46,7 @@ public class SelectTest {
     assertEquals(query, "SELECT column FROM `mytable` WHERE id = 1");
   }
 
-  @org.junit.Test
+  @Test
   public void selectJoinTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -59,7 +59,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable` JOIN `secondtable` ON mytable.id = secondtable.id WHERE id = 1");
   }
 
-  @org.junit.Test
+  @Test
   public void selectMultiJoinTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -73,9 +73,9 @@ public class SelectTest {
 
     assertEquals(query, "SELECT * FROM `mytable` JOIN `secondtable` ON mytable.id = secondtable.id " +
         "JOIN `thirdtable` ON secondtable.id = thirdtable.id WHERE id = 1");
-  }  
+  }
 
-  @org.junit.Test
+  @Test
   public void selectAndTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -87,7 +87,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 AND color = 'red'");
   }
 
-  @org.junit.Test
+  @Test
   public void selectLimitTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -99,7 +99,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 LIMIT 5");
   }
 
-  @org.junit.Test
+  @Test
   public void selectOrderByTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -110,7 +110,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable` ORDER BY rank");
   }
 
-  @org.junit.Test
+  @Test
   public void selectGroupByTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -121,7 +121,7 @@ public class SelectTest {
     assertEquals(query, "SELECT * FROM `mytable` GROUP BY rank");
   }
 
-  @org.junit.Test
+  @Test
   public void selectOrderByAdvancedTest() {
     String query = SQLiteQueryBuilder
         .select("*")
@@ -155,5 +155,17 @@ public class SelectTest {
         .toString();
 
     assertEquals(query, "SELECT ALL one,two,three FROM `mytable`");
+  }
+
+  @Test
+  public void selectOrderByAsc() {
+    String query = SQLiteQueryBuilder
+        .select("*")
+        .from("mytable")
+        .orderBy("age")
+        .asc()
+        .toString();
+
+    assertEquals(query, "SELECT * FROM `mytable` ORDER BY age ASC");
   }
 }

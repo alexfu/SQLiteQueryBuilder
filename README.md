@@ -1,4 +1,8 @@
 # SQLiteQueryBuilder
+
+[![Build Status](https://travis-ci.org/alexfu/SQLiteQueryBuilder.svg?branch=develop)](https://travis-ci.org/alexfu/SQLiteQueryBuilder)
+[![Coverage Status](https://coveralls.io/repos/alexfu/SQLiteQueryBuilder/badge.svg?branch=develop)](https://coveralls.io/r/alexfu/SQLiteQueryBuilder?branch=develop)
+
 This project is aimed at providing a simple API to build SQLite query statements. This library does nothing but build statements; it's not an ORM. The API syntax is inspired from the jOOQ library.
 
 Currently, SQLiteQueryBuilder is under active development so you may find some features missing. If this is the case, please file an issue or open a pull request.
