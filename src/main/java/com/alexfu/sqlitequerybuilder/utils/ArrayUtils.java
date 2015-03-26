@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.utils;
 
 public class ArrayUtils {
-  public static String join(Object[] array, String delimeter) {
+  public static String join(String delimeter, Object...array) {
     String result = "";
     for (int i = 0, size = array.length; i < size; i++) {
       result += array[i].toString();

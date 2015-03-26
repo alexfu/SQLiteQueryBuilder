@@ -18,7 +18,7 @@ public class SelectImpl extends QueryBuilder implements Select {
   public SelectImpl(String... fields) {
     getBuilder().setLength(0);
     getBuilder().append("SELECT ")
-        .append(ArrayUtils.join(fields, ","))
+        .append(ArrayUtils.join(",", fields))
         .append(" ");
   }
 

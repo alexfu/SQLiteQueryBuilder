@@ -11,7 +11,7 @@ public class ArrayUtilsTest {
     String[] strings = {"One", "Two", "Three", "Four", "Five"};
 
     String expected = "One,Two,Three,Four,Five";
-    String result = ArrayUtils.join(strings, ",");
+    String result = ArrayUtils.join(",", strings);
     assertEquals(expected, result);
   }
 }

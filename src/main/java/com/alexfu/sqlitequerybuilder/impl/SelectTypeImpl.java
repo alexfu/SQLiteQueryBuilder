@@ -13,7 +13,7 @@ public class SelectTypeImpl extends QueryBuilder implements SelectType {
   
   public SelectTypeImpl(Type type, String... columns) {
     getBuilder().append(type.toString()).append(" ")
-        .append(ArrayUtils.join(columns, ","))
+        .append(ArrayUtils.join(",", columns))
         .append(" ");
   }
 
