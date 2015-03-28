@@ -1,9 +1,8 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectOrderTermBuilder implements SegmentBuilder {
+public class SelectOrderTermBuilder extends SegmentBuilder {
 
   public enum Term {
     ASC, DESC
@@ -24,10 +23,5 @@ public class SelectOrderTermBuilder implements SegmentBuilder {
   @Override
   public String build() {
     return StringUtils.join(" ", prefix.build(), term.toString());
-  }
-
-  @Override
-  public String toString() {
-    return build();
   }
 }

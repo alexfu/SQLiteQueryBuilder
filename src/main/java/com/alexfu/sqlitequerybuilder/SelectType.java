@@ -2,7 +2,7 @@ package com.alexfu.sqlitequerybuilder;
 
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectType implements SegmentBuilder {
+public class SelectType implements Builder {
 
   private enum Type {
     DISTINCT, ALL

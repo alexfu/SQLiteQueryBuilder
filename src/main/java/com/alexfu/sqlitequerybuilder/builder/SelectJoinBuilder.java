@@ -1,15 +1,15 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
+import com.alexfu.sqlitequerybuilder.Builder;
 
 import static com.alexfu.sqlitequerybuilder.utils.StringUtils.join;
 
-public class SelectJoinBuilder implements SegmentBuilder {
+public class SelectJoinBuilder extends SegmentBuilder {
 
-  private SegmentBuilder prefix;
+  private Builder prefix;
   private String table;
 
-  public SelectJoinBuilder(SegmentBuilder prefix, String table) {
+  public SelectJoinBuilder(Builder prefix, String table) {
     this.prefix = prefix;
     this.table = table;
   }
@@ -21,10 +21,5 @@ public class SelectJoinBuilder implements SegmentBuilder {
   @Override
   public String build() {
     return join(" ", prefix.build(), "JOIN", table);
-  }
-
-  @Override
-  public String toString() {
-    return build();
   }
 }
