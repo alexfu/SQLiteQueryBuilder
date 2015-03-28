@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder;
 
-import com.alexfu.sqlitequerybuilder.impl.CreateImpl;
+import com.alexfu.sqlitequerybuilder.impl.CreateTableImpl;
 import com.alexfu.sqlitequerybuilder.impl.SelectImpl;
 
 public class SQLiteQueryBuilder {
@@ -12,7 +12,7 @@ public class SQLiteQueryBuilder {
 		return new SelectImpl();
 	}
 
-	public static Create createTable(String table) {
-		return new CreateImpl(table);
+	public static CreateTable createTable(String name) {
+		return new CreateTableImpl(name);
 	}
 }
