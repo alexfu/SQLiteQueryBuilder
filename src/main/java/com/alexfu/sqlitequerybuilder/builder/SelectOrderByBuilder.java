@@ -25,4 +25,9 @@ public class SelectOrderByBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), "ORDER BY", column);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

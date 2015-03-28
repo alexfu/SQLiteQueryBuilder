@@ -22,4 +22,9 @@ public class SelectJoinBuilder implements SegmentBuilder {
   public String build() {
     return join(" ", prefix.build(), "JOIN", table);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

@@ -25,4 +25,9 @@ public class SelectOrderTermBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), term.toString());
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

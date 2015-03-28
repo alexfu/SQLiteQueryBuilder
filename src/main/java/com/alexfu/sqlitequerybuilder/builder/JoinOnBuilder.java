@@ -25,4 +25,9 @@ public class JoinOnBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), "ON", condition);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

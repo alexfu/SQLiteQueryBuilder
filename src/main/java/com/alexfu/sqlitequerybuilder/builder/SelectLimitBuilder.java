@@ -32,4 +32,9 @@ public class SelectLimitBuilder implements SegmentBuilder {
     }
     return result;
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

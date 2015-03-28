@@ -33,4 +33,9 @@ public class SelectFromBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), "FROM", StringUtils.join(",", tables));
   }
+
+  @Override
+  public String toString() {
+    return toString();
+  }
 }

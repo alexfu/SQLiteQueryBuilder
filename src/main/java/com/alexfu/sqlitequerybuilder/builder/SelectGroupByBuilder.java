@@ -17,4 +17,9 @@ public class SelectGroupByBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), "GROUP BY", column);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

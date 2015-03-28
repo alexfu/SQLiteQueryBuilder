@@ -17,4 +17,9 @@ public class SelectAndBuilder implements SegmentBuilder {
   public String build() {
     return StringUtils.join(" ", prefix.build(), "AND", condition);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }

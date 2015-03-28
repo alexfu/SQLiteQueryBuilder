@@ -30,4 +30,9 @@ public class SelectWhereBuilder implements SegmentBuilder {
   public String build() {
     return join(" ", prefix.build(), "WHERE", condition);
   }
+
+  @Override
+  public String toString() {
+    return build();
+  }
 }
