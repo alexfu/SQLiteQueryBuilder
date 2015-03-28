@@ -6,7 +6,7 @@ public class SelectFieldBuilder extends SelectBuilder {
 
   private String[] fields;
 
-  public SelectFieldBuilder(String...fields) {
+  public SelectFieldBuilder(String... fields) {
     this.fields = fields;
   }
 

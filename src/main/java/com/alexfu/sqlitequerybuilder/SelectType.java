@@ -11,7 +11,7 @@ public class SelectType implements SegmentBuilder {
   private Type type;
   private String[] fields;
 
-  private SelectType(Type type, String...fields) {
+  private SelectType(Type type, String... fields) {
     this.type = type;
     this.fields = fields;
   }

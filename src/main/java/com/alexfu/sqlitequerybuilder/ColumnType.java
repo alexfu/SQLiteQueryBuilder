@@ -2,9 +2,9 @@ package com.alexfu.sqlitequerybuilder;
 
 public enum ColumnType {
 
-	TEXT,
-	NUMERIC,
-	INTEGER,
-	REAL,
-	NONE
+  TEXT,
+  NUMERIC,
+  INTEGER,
+  REAL,
+  NONE
 }
