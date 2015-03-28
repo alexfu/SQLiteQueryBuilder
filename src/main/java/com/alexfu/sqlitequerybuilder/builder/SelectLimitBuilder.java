@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SegmentBuilder;
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectLimitBuilder implements SegmentBuilder {
 
@@ -23,12 +23,12 @@ public class SelectLimitBuilder implements SegmentBuilder {
   public String build() {
     String offsetString = null;
     if (offset != -1) {
-      offsetString = ArrayUtils.join(" ", "OFFSET", offset);
+      offsetString = StringUtils.join(" ", "OFFSET", String.valueOf(offset));
     }
 
-    String result = ArrayUtils.join(" ", prefix.build(), "LIMIT", limit);
+    String result = StringUtils.join(" ", prefix.build(), "LIMIT", String.valueOf(limit));
     if (offsetString != null) {
-      result = ArrayUtils.join(" ", result, offsetString);
+      result = StringUtils.join(" ", result, offsetString);
     }
     return result;
   }

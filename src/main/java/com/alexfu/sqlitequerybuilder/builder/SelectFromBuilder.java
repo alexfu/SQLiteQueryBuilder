@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SegmentBuilder;
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectFromBuilder implements SegmentBuilder {
 
@@ -31,6 +31,6 @@ public class SelectFromBuilder implements SegmentBuilder {
 
   @Override
   public String build() {
-    return ArrayUtils.join(" ", prefix.build(), "FROM", ArrayUtils.join(",", tables));
+    return StringUtils.join(" ", prefix.build(), "FROM", StringUtils.join(",", tables));
   }
 }

@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SelectType;
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectTypeBuilder extends SelectBuilder {
 
@@ -13,6 +13,6 @@ public class SelectTypeBuilder extends SelectBuilder {
 
   @Override
   public String build() {
-    return ArrayUtils.join(" ", "SELECT", type.build());
+    return StringUtils.join(" ", "SELECT", type.build());
   }
 }

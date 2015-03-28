@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder;
 
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectType implements SegmentBuilder {
 
@@ -26,6 +26,6 @@ public class SelectType implements SegmentBuilder {
 
   @Override
   public String build() {
-    return ArrayUtils.join(" ", type, ArrayUtils.join(",", fields));
+    return StringUtils.join(" ", type.toString(), StringUtils.join(",", fields));
   }
 }

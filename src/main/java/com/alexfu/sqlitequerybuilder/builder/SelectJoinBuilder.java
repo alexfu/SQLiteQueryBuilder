@@ -2,7 +2,7 @@ package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 
-import static com.alexfu.sqlitequerybuilder.utils.ArrayUtils.join;
+import static com.alexfu.sqlitequerybuilder.utils.StringUtils.join;
 
 public class SelectJoinBuilder implements SegmentBuilder {
 

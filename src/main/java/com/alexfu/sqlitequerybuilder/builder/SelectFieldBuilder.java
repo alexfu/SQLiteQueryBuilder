@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectFieldBuilder extends SelectBuilder {
 
@@ -12,6 +12,6 @@ public class SelectFieldBuilder extends SelectBuilder {
 
   @Override
   public String build() {
-    return ArrayUtils.join(" ", "SELECT", ArrayUtils.join(",", fields));
+    return StringUtils.join(" ", "SELECT", StringUtils.join(",", fields));
   }
 }

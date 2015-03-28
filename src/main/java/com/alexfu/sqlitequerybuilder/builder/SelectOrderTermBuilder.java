@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SegmentBuilder;
-import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectOrderTermBuilder implements SegmentBuilder {
 
@@ -23,6 +23,6 @@ public class SelectOrderTermBuilder implements SegmentBuilder {
 
   @Override
   public String build() {
-    return ArrayUtils.join(" ", prefix.build(), term);
+    return StringUtils.join(" ", prefix.build(), term.toString());
   }
 }
