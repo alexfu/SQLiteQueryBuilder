@@ -1,5 +1,6 @@
 package com.alexfu.sqlitequerybuilder;
 
+import com.alexfu.sqlitequerybuilder.impl.SelectType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,9 +11,9 @@ public class SelectTest {
     String query = SQLiteQueryBuilder
         .select("column")
         .from("mytable")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT column FROM `mytable`");
+    assertEquals(query, "SELECT column FROM mytable");
   }
 
   @Test
@@ -20,9 +21,9 @@ public class SelectTest {
     String query = SQLiteQueryBuilder.
         select("column1", "column2", "column3")
         .from("mytable")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT column1,column2,column3 FROM `mytable`");
+    assertEquals(query, "SELECT column1,column2,column3 FROM mytable");
   }
 
   @Test
@@ -30,9 +31,9 @@ public class SelectTest {
     String query = SQLiteQueryBuilder
         .select("*")
         .from("mytable")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable`");
+    assertEquals(query, "SELECT * FROM mytable");
   }
 
   @Test
@@ -41,9 +42,9 @@ public class SelectTest {
         .select("column")
         .from("mytable")
         .where("id = 1")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT column FROM `mytable` WHERE id = 1");
+    assertEquals(query, "SELECT column FROM mytable WHERE id = 1");
   }
 
   @Test
@@ -54,9 +55,9 @@ public class SelectTest {
         .join("secondtable")
         .on("mytable.id = secondtable.id")
         .where("id = 1")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` JOIN `secondtable` ON mytable.id = secondtable.id WHERE id = 1");
+    assertEquals(query, "SELECT * FROM mytable JOIN secondtable ON mytable.id = secondtable.id WHERE id = 1");
   }
 
   @Test
@@ -69,10 +70,10 @@ public class SelectTest {
         .join("thirdtable")
         .on("secondtable.id = thirdtable.id")
         .where("id = 1")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` JOIN `secondtable` ON mytable.id = secondtable.id " +
-        "JOIN `thirdtable` ON secondtable.id = thirdtable.id WHERE id = 1");
+    assertEquals(query, "SELECT * FROM mytable JOIN secondtable ON mytable.id = secondtable.id " +
+        "JOIN thirdtable ON secondtable.id = thirdtable.id WHERE id = 1");
   }
 
   @Test
@@ -82,9 +83,9 @@ public class SelectTest {
         .from("mytable")
         .where("id = 1")
         .and("color = 'red'")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 AND color = 'red'");
+    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 AND color = 'red'");
   }
 
   @Test
@@ -94,9 +95,9 @@ public class SelectTest {
         .from("mytable")
         .where("id = 1")
         .limit(5)
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 LIMIT 5");
+    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 LIMIT 5");
   }
 
   @Test
@@ -105,9 +106,9 @@ public class SelectTest {
         .select("*")
         .from("mytable")
         .orderBy("rank")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` ORDER BY rank");
+    assertEquals(query, "SELECT * FROM mytable ORDER BY rank");
   }
 
   @Test
@@ -116,9 +117,9 @@ public class SelectTest {
         .select("*")
         .from("mytable")
         .groupBy("rank")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` GROUP BY rank");
+    assertEquals(query, "SELECT * FROM mytable GROUP BY rank");
   }
 
   @Test
@@ -129,32 +130,31 @@ public class SelectTest {
         .where("id = 1")
         .orderBy("rank")
         .desc()
-        .limit(10, 5)
-        .toString();
+        .limit(10)
+        .offset(5)
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
+    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
   }
-  
+
   @Test
   public void selectDistinctTest() {
     String query = SQLiteQueryBuilder
-        .select()
-        .distinct("one", "two", "three")
+        .select(SelectType.DISTINCT("one", "two", "three"))
         .from("mytable")
-        .toString();
-    
-    assertEquals(query, "SELECT DISTINCT one,two,three FROM `mytable`");
+        .build();
+
+    assertEquals(query, "SELECT DISTINCT one,two,three FROM mytable");
   }
 
   @Test
   public void selectAllTest() {
     String query = SQLiteQueryBuilder
-        .select()
-        .all("one", "two", "three")
+        .select(SelectType.ALL("one", "two", "three"))
         .from("mytable")
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT ALL one,two,three FROM `mytable`");
+    assertEquals(query, "SELECT ALL one,two,three FROM mytable");
   }
 
   @Test
@@ -164,8 +164,8 @@ public class SelectTest {
         .from("mytable")
         .orderBy("age")
         .asc()
-        .toString();
+        .build();
 
-    assertEquals(query, "SELECT * FROM `mytable` ORDER BY age ASC");
+    assertEquals(query, "SELECT * FROM mytable ORDER BY age ASC");
   }
 }
