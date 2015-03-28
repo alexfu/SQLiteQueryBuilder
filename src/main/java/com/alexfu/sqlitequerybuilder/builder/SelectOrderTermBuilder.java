@@ -1,4 +1,4 @@
-package com.alexfu.sqlitequerybuilder.impl;
+package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;

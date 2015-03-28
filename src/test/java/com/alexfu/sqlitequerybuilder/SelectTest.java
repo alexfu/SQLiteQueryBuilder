@@ -1,6 +1,5 @@
 package com.alexfu.sqlitequerybuilder;
 
-import com.alexfu.sqlitequerybuilder.impl.SelectType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

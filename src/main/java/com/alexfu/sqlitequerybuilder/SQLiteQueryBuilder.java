@@ -1,14 +1,15 @@
 package com.alexfu.sqlitequerybuilder;
 
-import com.alexfu.sqlitequerybuilder.impl.SelectBuilder;
-import com.alexfu.sqlitequerybuilder.impl.SelectType;
+import com.alexfu.sqlitequerybuilder.builder.SelectBuilder;
+import com.alexfu.sqlitequerybuilder.builder.SelectFieldBuilder;
+import com.alexfu.sqlitequerybuilder.builder.SelectTypeBuilder;
 
 public class SQLiteQueryBuilder {
   public static SelectBuilder select(String... fields) {
-    return new SelectBuilder(fields);
+    return new SelectFieldBuilder(fields);
   }
 
   public static SelectBuilder select(SelectType type) {
-    return new SelectBuilder(type);
+    return new SelectTypeBuilder(type);
   }
 }

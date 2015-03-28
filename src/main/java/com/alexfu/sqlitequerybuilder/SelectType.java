@@ -1,6 +1,5 @@
-package com.alexfu.sqlitequerybuilder.impl;
+package com.alexfu.sqlitequerybuilder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.ArrayUtils;
 
 public class SelectType implements SegmentBuilder {
