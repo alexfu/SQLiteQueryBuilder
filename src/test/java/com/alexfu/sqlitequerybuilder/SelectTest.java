@@ -2,6 +2,7 @@ package com.alexfu.sqlitequerybuilder;
 
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class SelectTest {
@@ -12,7 +13,7 @@ public class SelectTest {
         .from("mytable")
         .build();
 
-    assertEquals(query, "SELECT column FROM mytable");
+    assertThat(query).isEqualTo("SELECT column FROM mytable");
   }
 
   @Test
@@ -22,7 +23,7 @@ public class SelectTest {
         .from("mytable")
         .build();
 
-    assertEquals(query, "SELECT column1,column2,column3 FROM mytable");
+    assertThat(query).isEqualTo( "SELECT column1,column2,column3 FROM mytable");
   }
 
   @Test
@@ -32,7 +33,7 @@ public class SelectTest {
         .from("mytable")
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable");
   }
 
   @Test
@@ -43,7 +44,7 @@ public class SelectTest {
         .where("id = 1")
         .build();
 
-    assertEquals(query, "SELECT column FROM mytable WHERE id = 1");
+    assertThat(query).isEqualTo( "SELECT column FROM mytable WHERE id = 1");
   }
 
   @Test
@@ -56,7 +57,7 @@ public class SelectTest {
         .where("id = 1")
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable JOIN secondtable ON mytable.id = secondtable.id WHERE id = 1");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable JOIN secondtable ON mytable.id = secondtable.id WHERE id = 1");
   }
 
   @Test
@@ -84,7 +85,7 @@ public class SelectTest {
         .and("color = 'red'")
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 AND color = 'red'");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable WHERE id = 1 AND color = 'red'");
   }
 
   @Test
@@ -96,7 +97,7 @@ public class SelectTest {
         .limit(5)
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 LIMIT 5");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable WHERE id = 1 LIMIT 5");
   }
 
   @Test
@@ -107,7 +108,7 @@ public class SelectTest {
         .orderBy("rank")
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable ORDER BY rank");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable ORDER BY rank");
   }
 
   @Test
@@ -118,7 +119,7 @@ public class SelectTest {
         .groupBy("rank")
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable GROUP BY rank");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable GROUP BY rank");
   }
 
   @Test
@@ -133,7 +134,7 @@ public class SelectTest {
         .offset(5)
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable WHERE id = 1 ORDER BY rank DESC LIMIT 10 OFFSET 5");
   }
 
   @Test
@@ -143,7 +144,7 @@ public class SelectTest {
         .from("mytable")
         .build();
 
-    assertEquals(query, "SELECT DISTINCT one,two,three FROM mytable");
+    assertThat(query).isEqualTo( "SELECT DISTINCT one,two,three FROM mytable");;
   }
 
   @Test
@@ -153,7 +154,7 @@ public class SelectTest {
         .from("mytable")
         .build();
 
-    assertEquals(query, "SELECT ALL one,two,three FROM mytable");
+    assertThat(query).isEqualTo( "SELECT ALL one,two,three FROM mytable");
   }
 
   @Test
@@ -165,6 +166,6 @@ public class SelectTest {
         .asc()
         .build();
 
-    assertEquals(query, "SELECT * FROM mytable ORDER BY age ASC");
+    assertThat(query).isEqualTo( "SELECT * FROM mytable ORDER BY age ASC");
   }
 }
