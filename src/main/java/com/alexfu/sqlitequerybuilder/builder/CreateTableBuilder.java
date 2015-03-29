@@ -2,7 +2,6 @@ package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.Column;
 import com.alexfu.sqlitequerybuilder.CreateTable;
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * @author Steven Wu
  */
-public class CreateTableBuilder implements CreateTable, SegmentBuilder {
+public class CreateTableBuilder extends SegmentBuilder implements CreateTable {
 
   private final List<Column> definitions = new ArrayList<Column>();
   private String table;
@@ -32,10 +31,5 @@ public class CreateTableBuilder implements CreateTable, SegmentBuilder {
   @Override
   public String build() {
     return StringUtils.join(" ", "CREATE TABLE", table + "(" + StringUtils.join(",", definitions.toArray()) + ")");
-  }
-
-  @Override
-  public String toString() {
-    return build();
   }
 }

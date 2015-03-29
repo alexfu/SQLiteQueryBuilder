@@ -1,9 +1,8 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectOrderTermBuilder implements SegmentBuilder {
+public class SelectOrderTermBuilder extends SegmentBuilder {
 
   public enum Term {
     ASC, DESC

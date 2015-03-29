@@ -2,7 +2,7 @@ package com.alexfu.sqlitequerybuilder;
 
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class Column implements SegmentBuilder {
+public class Column implements Builder {
 
   private final String name;
   private final ColumnType type;

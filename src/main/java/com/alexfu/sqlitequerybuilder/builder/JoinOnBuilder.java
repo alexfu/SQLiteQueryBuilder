@@ -1,9 +1,8 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class JoinOnBuilder implements SegmentBuilder {
+public class JoinOnBuilder extends SegmentBuilder {
 
   private SelectJoinBuilder prefix;
   private String condition;

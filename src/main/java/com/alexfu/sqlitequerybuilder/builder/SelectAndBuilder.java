@@ -1,9 +1,8 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectAndBuilder implements SegmentBuilder {
+public class SelectAndBuilder extends SegmentBuilder {
 
   private SelectWhereBuilder prefix;
   private String condition;

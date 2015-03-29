@@ -1,14 +1,14 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
+import com.alexfu.sqlitequerybuilder.Builder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectOrderByBuilder implements SegmentBuilder {
+public class SelectOrderByBuilder extends SegmentBuilder {
 
-  private SegmentBuilder prefix;
+  private Builder prefix;
   private String column;
 
-  public SelectOrderByBuilder(SegmentBuilder prefix, String column) {
+  public SelectOrderByBuilder(Builder prefix, String column) {
     this.prefix = prefix;
     this.column = column;
   }

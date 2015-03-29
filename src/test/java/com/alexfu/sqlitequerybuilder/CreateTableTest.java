@@ -2,7 +2,7 @@ package com.alexfu.sqlitequerybuilder;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CreateTableTest {
 
@@ -18,8 +18,7 @@ public class CreateTableTest {
         .toString();
 
     // Assert
-    assertEquals("Error: the actual query does not match the expected.",
-        "CREATE TABLE myTable(column1 INTEGER PRIMARY KEY)", query);
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY)");
   }
 
   @Test
@@ -37,9 +36,7 @@ public class CreateTableTest {
         .toString();
 
     // Assert
-    assertEquals(
-        "Error: the actual query does not match the expected.",
-        "CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 TEXT,column3 TEXT NOT NULL)", query);
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 TEXT,column3 TEXT NOT NULL)");
   }
 
   @Test(expected = IllegalArgumentException.class)

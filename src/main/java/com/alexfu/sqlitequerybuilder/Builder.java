@@ -1,5 +1,5 @@
 package com.alexfu.sqlitequerybuilder;
 
-public interface SegmentBuilder {
+public interface Builder {
   public String build();
 }

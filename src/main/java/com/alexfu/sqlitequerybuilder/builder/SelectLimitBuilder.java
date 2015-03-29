@@ -1,15 +1,15 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
+import com.alexfu.sqlitequerybuilder.Builder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
-public class SelectLimitBuilder implements SegmentBuilder {
+public class SelectLimitBuilder extends SegmentBuilder {
 
-  private SegmentBuilder prefix;
+  private Builder prefix;
   private int limit = -1;
   private int offset = -1;
 
-  public SelectLimitBuilder(SegmentBuilder prefix, int limit) {
+  public SelectLimitBuilder(Builder prefix, int limit) {
     this.prefix = prefix;
     this.limit = limit;
   }

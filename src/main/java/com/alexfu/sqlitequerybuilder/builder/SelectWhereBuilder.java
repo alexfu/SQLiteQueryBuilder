@@ -1,15 +1,15 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SegmentBuilder;
+import com.alexfu.sqlitequerybuilder.Builder;
 
 import static com.alexfu.sqlitequerybuilder.utils.StringUtils.join;
 
-public class SelectWhereBuilder implements SegmentBuilder {
+public class SelectWhereBuilder extends SegmentBuilder {
 
-  private SegmentBuilder prefix;
+  private Builder prefix;
   private String condition;
 
-  public SelectWhereBuilder(SegmentBuilder prefix, String condition) {
+  public SelectWhereBuilder(Builder prefix, String condition) {
     this.condition = condition;
     this.prefix = prefix;
   }
