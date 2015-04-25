@@ -2,6 +2,9 @@ package com.alexfu.sqlitequerybuilder;
 
 import org.junit.Test;
 
+import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
+import com.alexfu.sqlitequerybuilder.api.SelectType;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 

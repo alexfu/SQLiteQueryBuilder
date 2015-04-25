@@ -1,7 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.Column;
-import com.alexfu.sqlitequerybuilder.CreateTable;
+import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.api.CreateTable;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 import java.util.ArrayList;

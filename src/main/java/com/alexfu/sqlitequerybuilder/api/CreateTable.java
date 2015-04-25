@@ -1,4 +1,4 @@
-package com.alexfu.sqlitequerybuilder;
+package com.alexfu.sqlitequerybuilder.api;
 
 /**
  * @author Steven Wu

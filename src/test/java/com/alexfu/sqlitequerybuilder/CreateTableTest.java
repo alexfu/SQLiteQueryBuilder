@@ -2,6 +2,11 @@ package com.alexfu.sqlitequerybuilder;
 
 import org.junit.Test;
 
+import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
+import com.alexfu.sqlitequerybuilder.api.ColumnType;
+import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CreateTableTest {
