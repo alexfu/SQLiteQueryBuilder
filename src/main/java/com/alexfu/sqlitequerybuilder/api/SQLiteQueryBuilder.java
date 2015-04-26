@@ -15,6 +15,10 @@ public class SQLiteQueryBuilder {
   }
 
   public static CreateTableBuilder createTable(String table) {
-    return new CreateTableBuilder(table);
+    return new CreateTableBuilder(table, false);
+  }
+  
+  public static CreateTableBuilder createTable(String table, boolean tableExists) {
+  	return new CreateTableBuilder(table, tableExists);
   }
 }
