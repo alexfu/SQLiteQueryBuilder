@@ -1,8 +1,13 @@
 package com.alexfu.sqlitequerybuilder;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
+import com.alexfu.sqlitequerybuilder.api.ColumnType;
+import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
 
 public class CreateTableTest {
 
@@ -45,4 +50,15 @@ public class CreateTableTest {
     SQLiteQueryBuilder.createTable("myTable").column(null).toString();
   }
 
+  @Test
+  public final void createTableIfNotExists() {
+  	// Arrange
+  	Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
+  	
+  	// Act
+  	String query = SQLiteQueryBuilder.createTable("myTable").ifNotExists().column(column).toString();
+  	
+  	// Assert
+  	assertThat(query).isEqualTo("CREATE TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
+  }
 }

@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.Builder;
+import com.alexfu.sqlitequerybuilder.api.Builder;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectLimitBuilder extends SegmentBuilder {

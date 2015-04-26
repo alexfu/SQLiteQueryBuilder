@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.Builder;
+import com.alexfu.sqlitequerybuilder.api.Builder;
 
 import static com.alexfu.sqlitequerybuilder.utils.StringUtils.join;
 

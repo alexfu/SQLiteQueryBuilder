@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.SelectType;
+import com.alexfu.sqlitequerybuilder.api.SelectType;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectTypeBuilder extends SelectBuilder {

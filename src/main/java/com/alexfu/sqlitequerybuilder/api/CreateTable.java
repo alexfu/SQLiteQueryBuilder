@@ -1,4 +1,4 @@
-package com.alexfu.sqlitequerybuilder;
+package com.alexfu.sqlitequerybuilder.api;
 
 /**
  * @author Steven Wu
@@ -6,4 +6,6 @@ package com.alexfu.sqlitequerybuilder;
 public interface CreateTable {
 
   public CreateTable column(Column column);
+  
+  public CreateTable ifNotExists();
 }

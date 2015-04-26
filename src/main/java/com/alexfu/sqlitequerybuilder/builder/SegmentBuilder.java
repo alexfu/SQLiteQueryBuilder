@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.Builder;
+import com.alexfu.sqlitequerybuilder.api.Builder;
 
 public abstract class SegmentBuilder implements Builder {
   @Override
