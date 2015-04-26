@@ -6,4 +6,6 @@ package com.alexfu.sqlitequerybuilder.api;
 public interface CreateTable {
 
   public CreateTable column(Column column);
+  
+  public CreateTable ifNotExists();
 }

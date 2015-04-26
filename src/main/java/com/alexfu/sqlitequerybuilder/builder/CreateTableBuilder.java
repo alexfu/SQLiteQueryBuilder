@@ -14,11 +14,10 @@ public class CreateTableBuilder extends SegmentBuilder implements CreateTable {
 
   private final List<Column> definitions = new ArrayList<Column>();
   private String table;
-	private boolean tableExists;
+  private String command = "CREATE TABLE";
 
-  public CreateTableBuilder(String table, boolean tableExists) {
+  public CreateTableBuilder(String table) {
   	this.table = table;
-		this.tableExists = tableExists;
 	}
 
 	@Override
@@ -30,13 +29,14 @@ public class CreateTableBuilder extends SegmentBuilder implements CreateTable {
     return this;
   }
 
+	@Override
+	public CreateTable ifNotExists() {
+		command = StringUtils.join(" ", command, "IF NOT EXISTS");
+		return this;
+	}
+	
   @Override
   public String build() {
-  	String command = "CREATE TABLE";
-    if (tableExists) {
-    	command = StringUtils.join(" ", command, "IF NOT EXISTS");
-    }
-    
 		return StringUtils.join(" ", command, table + "(" + StringUtils.join(",", definitions.toArray()) + ")");
   }
 }

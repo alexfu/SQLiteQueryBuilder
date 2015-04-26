@@ -56,21 +56,9 @@ public class CreateTableTest {
   	Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
   	
   	// Act
-  	String query = SQLiteQueryBuilder.createTable("myTable", true).column(column).toString();
+  	String query = SQLiteQueryBuilder.createTable("myTable").ifNotExists().column(column).toString();
   	
   	// Assert
   	assertThat(query).isEqualTo("CREATE TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
-  }
-  
-  @Test
-  public final void createTableWithoutIfNotExists() {
-  	// Arrange
-  	Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
-  	
-  	// Act
-  	String query = SQLiteQueryBuilder.createTable("myTable", false).column(column).toString();
-  	
-  	// Assert
-  	assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY)");
   }
 }
