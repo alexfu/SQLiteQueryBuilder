@@ -1,7 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.api.Column;
-import com.alexfu.sqlitequerybuilder.api.CreateTable;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -10,18 +9,17 @@ import java.util.List;
 /**
  * @author Steven Wu
  */
-public class CreateTableBuilder extends SegmentBuilder implements CreateTable {
+public class CreateTableBuilder extends SegmentBuilder {
 
   private final List<Column> definitions = new ArrayList<Column>();
   private String table;
-  private String command = "CREATE TABLE";
+  private boolean ifNotExists;
 
   public CreateTableBuilder(String table) {
   	this.table = table;
 	}
 
-	@Override
-  public CreateTable column(Column column) {
+  public CreateTableBuilder column(Column column) {
     if (column == null) {
       throw new IllegalArgumentException("A non-null column is required.");
     }
@@ -29,14 +27,14 @@ public class CreateTableBuilder extends SegmentBuilder implements CreateTable {
     return this;
   }
 
-	@Override
-	public CreateTable ifNotExists() {
-		command = StringUtils.join(" ", command, "IF NOT EXISTS");
+	public CreateTableBuilder ifNotExists() {
+		ifNotExists = true;
 		return this;
 	}
 	
   @Override
   public String build() {
-		return StringUtils.join(" ", command, table + "(" + StringUtils.join(",", definitions.toArray()) + ")");
+    String statement = "CREATE TABLE" + (ifNotExists ? " IF NOT EXISTS" : "");
+    return StringUtils.join(" ", statement, table + "(" + StringUtils.join(",", definitions.toArray()) + ")");
   }
 }

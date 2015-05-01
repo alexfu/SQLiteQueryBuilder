@@ -1,9 +1,6 @@
 package com.alexfu.sqlitequerybuilder.api;
 
-import com.alexfu.sqlitequerybuilder.builder.CreateTableBuilder;
-import com.alexfu.sqlitequerybuilder.builder.SelectBuilder;
-import com.alexfu.sqlitequerybuilder.builder.SelectFieldBuilder;
-import com.alexfu.sqlitequerybuilder.builder.SelectTypeBuilder;
+import com.alexfu.sqlitequerybuilder.builder.*;
 
 public class SQLiteQueryBuilder {
   public static SelectBuilder select(String... fields) {
@@ -14,7 +11,7 @@ public class SQLiteQueryBuilder {
     return new SelectTypeBuilder(type);
   }
 
-  public static CreateTableBuilder createTable(String table) {
-    return new CreateTableBuilder(table);
+  public static CreateBuilder create() {
+    return new CreateBuilder();
   }
 }

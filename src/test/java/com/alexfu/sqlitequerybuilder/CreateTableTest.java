@@ -18,7 +18,8 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-        .createTable("myTable")
+        .create()
+        .table("myTable")
         .column(column)
         .toString();
 
@@ -34,7 +35,9 @@ public class CreateTableTest {
     Column column3 = new Column("column3", ColumnType.TEXT, ColumnConstraint.NOT_NULL);
 
     // Act
-    String query = SQLiteQueryBuilder.createTable("myTable")
+    String query = SQLiteQueryBuilder
+        .create()
+        .table("myTable")
         .column(column1)
         .column(column2)
         .column(column3)
@@ -47,7 +50,11 @@ public class CreateTableTest {
   @Test(expected = IllegalArgumentException.class)
   public final void passNullColumnShouldThrowExeption() {
     // Act
-    SQLiteQueryBuilder.createTable("myTable").column(null).toString();
+    SQLiteQueryBuilder
+        .create()
+        .table("myTable")
+        .column(null)
+        .toString();
   }
 
   @Test
@@ -56,7 +63,12 @@ public class CreateTableTest {
   	Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
   	
   	// Act
-  	String query = SQLiteQueryBuilder.createTable("myTable").ifNotExists().column(column).toString();
+  	String query = SQLiteQueryBuilder
+        .create()
+        .table("myTable")
+        .ifNotExists()
+        .column(column)
+        .toString();
   	
   	// Assert
   	assertThat(query).isEqualTo("CREATE TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
