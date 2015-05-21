@@ -8,10 +8,12 @@ public class SelectJoinBuilder extends SegmentBuilder {
 
   private Builder prefix;
   private String table;
+  private JoinType joinType;
 
-  public SelectJoinBuilder(Builder prefix, String table) {
+  public SelectJoinBuilder(Builder prefix, String table, JoinType joinType) {
     this.prefix = prefix;
     this.table = table;
+    this.joinType = joinType;
   }
 
   public JoinOnBuilder on(String condition) {
@@ -20,6 +22,6 @@ public class SelectJoinBuilder extends SegmentBuilder {
 
   @Override
   public String build() {
-    return join(" ", prefix.build(), "JOIN", table);
+    return join(" ", prefix.build(), joinType.toSQL(), table);
   }
 }
