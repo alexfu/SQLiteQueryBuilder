@@ -20,22 +20,6 @@ public class JoinOnBuilder extends SegmentBuilder {
     return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 
-  public SelectJoinBuilder leftOuterJoin(String table) {
-    return new SelectJoinBuilder(this, table, JoinType.LEFT_OUTER_JOIN);
-  }
-
-  public SelectJoinBuilder crossJoin(String table) {
-    return new SelectJoinBuilder(this, table, JoinType.CROSS_JOIN);
-  }
-
-  public SelectJoinBuilder naturalJoin(String table) {
-    return new SelectJoinBuilder(this, table, JoinType.NATURAL_JOIN);
-  }
-
-  public SelectJoinBuilder naturalLeftOuterJoin(String table) {
-    return new SelectJoinBuilder(this, table, JoinType.NATURAL_LEFT_OUTER_JOIN);
-  }
-
   @Override
   public String build() {
     return StringUtils.join(" ", prefix.build(), "ON", condition);
