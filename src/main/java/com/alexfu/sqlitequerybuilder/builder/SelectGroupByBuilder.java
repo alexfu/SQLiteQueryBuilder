@@ -12,6 +12,10 @@ public class SelectGroupByBuilder extends SegmentBuilder {
     this.column = column;
   }
 
+  public SelectHavingBuilder having(String condition) {
+    return new SelectHavingBuilder(this, condition);
+  }
+
   @Override
   public String build() {
     return StringUtils.join(" ", prefix.build(), "GROUP BY", column);
