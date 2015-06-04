@@ -17,7 +17,7 @@ public class JoinOnBuilder extends SegmentBuilder {
   }
 
   public SelectJoinBuilder join(String table) {
-    return new SelectJoinBuilder(this, table);
+    return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 
   @Override

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
 import com.alexfu.sqlitequerybuilder.api.SelectType;
+import com.alexfu.sqlitequerybuilder.builder.JoinType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -61,6 +62,52 @@ public class SelectTest {
         .build();
 
     assertThat(query).isEqualTo( "SELECT * FROM mytable JOIN secondtable ON mytable.id = secondtable.id WHERE id = 1");
+  }
+
+  @Test
+  public void selectLeftOuterJoinTest() {
+    String query = SQLiteQueryBuilder
+            .select("*")
+            .from("mytable")
+            .leftOuterJoin("secondtable")
+            .on("mytable.id = secondtable.id")
+            .where("id = 1")
+            .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable LEFT OUTER JOIN secondtable ON mytable.id = secondtable.id WHERE id = 1");
+  }
+
+  @Test
+  public void selectCrossJoinTest() {
+    String query = SQLiteQueryBuilder
+            .select("*")
+            .from("mytable")
+            .crossJoin("secondtable")
+            .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable CROSS JOIN secondtable");
+  }
+
+  @Test
+  public void selectNaturalJoinTest() {
+    String query = SQLiteQueryBuilder
+            .select("*")
+            .from("mytable")
+            .naturalJoin("secondtable")
+            .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable NATURAL JOIN secondtable");
+  }
+
+  @Test
+  public void selectNaturalLeftOuterJoinTest() {
+    String query = SQLiteQueryBuilder
+            .select("*")
+            .from("mytable")
+            .naturalLeftOuterJoin("secondtable")
+            .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable NATURAL LEFT OUTER JOIN secondtable");
   }
 
   @Test
