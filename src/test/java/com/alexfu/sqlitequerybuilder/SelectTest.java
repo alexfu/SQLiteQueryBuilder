@@ -173,9 +173,35 @@ public class SelectTest {
   }
 
   @Test
-  public void selectOrderByAdvancedTest() {
+  public void selectGroupByHavingOrderTest() {
     String query = SQLiteQueryBuilder
         .select("*")
+        .from("mytable")
+        .groupBy("rank")
+        .having("age > 0")
+        .orderBy("rank")
+        .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable GROUP BY rank HAVING age > 0 ORDER BY rank");
+  }
+
+  @Test
+  public void selectGroupByHavingLimitTest() {
+    String query = SQLiteQueryBuilder
+         .select("*")
+         .from("mytable")
+         .groupBy("rank")
+         .having("age > 0")
+         .limit(3)
+         .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable GROUP BY rank HAVING age > 0 LIMIT 3");
+  }
+
+  @Test
+  public void selectOrderByAdvancedTest() {
+    String query = SQLiteQueryBuilder
+            .select("*")
         .from("mytable")
         .where("id = 1")
         .orderBy("rank")
