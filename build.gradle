@@ -16,7 +16,7 @@ buildscript {
 }
 
 sourceCompatibility = 1.5
-version = '0.01'
+version = '0.1.1'
 
 repositories {
     mavenCentral()
