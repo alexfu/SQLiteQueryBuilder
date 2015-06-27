@@ -1,6 +1,9 @@
 apply plugin: 'java'
+apply plugin: 'maven'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
+
+group = 'com.github.alexfu'
 
 buildscript {
     repositories {
