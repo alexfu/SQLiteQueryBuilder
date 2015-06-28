@@ -14,4 +14,8 @@ public class SQLiteQueryBuilder {
   public static CreateBuilder create() {
     return new CreateBuilder();
   }
+  
+  public static DropBuilder drop() {
+  	return new DropBuilder();
+  }
 }
