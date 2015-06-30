@@ -1,26 +1,31 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
+import com.alexfu.sqlitequerybuilder.api.DropType;
+import com.alexfu.sqlitequerybuilder.utils.StringUtils;
+
+
 /**
  * @author Steven Wu
  *
  */
 public class DropBuilder extends SegmentBuilder {
 
-	private enum Type {
-		TABLE
+	private boolean ifExists;
+	private DropType type;
+	private String name;
+
+	public DropBuilder(DropType type, String name) {
+		this.type = type;
+		this.name = name;
 	}
 	
-	private Type type;
-	
-	public DropTableBuilder table(String table) {
-		this.type = Type.TABLE;
-		return new DropTableBuilder(table);
+	public DropBuilder ifExists() {
+		ifExists = true;
+		return this;
 	}
 
 	@Override
 	public String build() {
-		// TODO Auto-generated method stub
-		return null;
+		return StringUtils.join(" ", "DROP", type, (ifExists ? "IF EXISTS" : ""), name);
 	}
-
 }

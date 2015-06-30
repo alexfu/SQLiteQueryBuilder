@@ -15,7 +15,7 @@ public class SQLiteQueryBuilder {
     return new CreateBuilder();
   }
   
-  public static DropBuilder drop() {
-  	return new DropBuilder();
+  public static DropSegmentBuilder drop() {
+  	return new DropSegmentBuilder();
   }
 }
