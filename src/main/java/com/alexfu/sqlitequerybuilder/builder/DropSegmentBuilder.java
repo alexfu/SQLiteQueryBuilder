@@ -43,7 +43,8 @@ public class DropSegmentBuilder extends SegmentBuilder {
 
   @Override
   public String build() {
-    return StringUtils.join(" ", "DROP", type, (ifExists ? "IF EXISTS" : ""), name);
+  	String statement = "DROP " + type + (ifExists ? " IF EXISTS" : "");
+  	return StringUtils.join(" ", statement, name);
   }
   
 }

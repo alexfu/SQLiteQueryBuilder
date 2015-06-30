@@ -30,7 +30,7 @@ public class DropTest {
             .toString();
 
     // Assert
-    assertThat(statement).isEqualTo("DROP TABLE  myTable");
+    assertThat(statement).isEqualTo("DROP TABLE myTable");
   }
 
   @Test
@@ -55,7 +55,7 @@ public class DropTest {
             .toString();
 
     // Assert
-    assertThat(statement).isEqualTo("DROP VIEW  myView");
+    assertThat(statement).isEqualTo("DROP VIEW myView");
   }
 
   @Test
@@ -80,7 +80,7 @@ public class DropTest {
             .toString();
 
     // Assert
-    assertThat(statement).isEqualTo("DROP INDEX  myIndex");
+    assertThat(statement).isEqualTo("DROP INDEX myIndex");
   }
 
   @Test
@@ -105,6 +105,6 @@ public class DropTest {
             .toString();
 
     // Assert
-    assertThat(statement).isEqualTo("DROP TRIGGER  myTrigger");
+    assertThat(statement).isEqualTo("DROP TRIGGER myTrigger");
   }
 }
