@@ -7,14 +7,12 @@ public class StringUtils {
 
   public static String join(CharSequence delimiter, Object... array) {
     StringBuilder sb = new StringBuilder();
-    boolean firstTime = true;
-    for (Object object : array) {
-      if (firstTime) {
-        firstTime = false;
-      } else {
+
+    for (int i = 0, size = array.length; i < size; i++) {
+      if (i > 0) {
         sb.append(delimiter);
       }
-      sb.append(object);
+      sb.append(array[i]);
     }
     return sb.toString();
   }
