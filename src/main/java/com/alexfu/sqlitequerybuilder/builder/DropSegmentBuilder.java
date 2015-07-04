@@ -36,7 +36,7 @@ public class DropSegmentBuilder extends SegmentBuilder {
     return new DropSegmentBuilder(DropType.TRIGGER, trigger);
   }
 
-  public DropSegmentBuilder ifExists() {
+  public SegmentBuilder ifExists() {
     ifExists = true;
     return this;
   }
