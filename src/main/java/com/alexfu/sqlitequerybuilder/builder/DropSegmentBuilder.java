@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-import com.alexfu.sqlitequerybuilder.api.DropType;
+import com.alexfu.sqlitequerybuilder.api.ObjectType;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 /**
@@ -9,10 +9,10 @@ import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 public class DropSegmentBuilder extends SegmentBuilder {
 
   private boolean ifExists;
-  private DropType type;
+  private ObjectType type;
   private String name;
 
-  private DropSegmentBuilder(DropType type, String name) {
+  private DropSegmentBuilder(ObjectType type, String name) {
     this.type = type;
     this.name = name;
   }
@@ -21,19 +21,19 @@ public class DropSegmentBuilder extends SegmentBuilder {
   }
 
   public DropSegmentBuilder table(String table) {
-    return new DropSegmentBuilder(DropType.TABLE, table);
+    return new DropSegmentBuilder(ObjectType.TABLE, table);
   }
 
   public DropSegmentBuilder view(String view) {
-    return new DropSegmentBuilder(DropType.VIEW, view);
+    return new DropSegmentBuilder(ObjectType.VIEW, view);
   }
 
   public DropSegmentBuilder index(String index) {
-    return new DropSegmentBuilder(DropType.INDEX, index);
+    return new DropSegmentBuilder(ObjectType.INDEX, index);
   }
 
   public DropSegmentBuilder trigger(String trigger) {
-    return new DropSegmentBuilder(DropType.TRIGGER, trigger);
+    return new DropSegmentBuilder(ObjectType.TRIGGER, trigger);
   }
 
   public SegmentBuilder ifExists() {
