@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CreateTableSegmentBuilder extends SegmentBuilder {
 
-  private boolean isTemp;
+  private boolean temp;
   private boolean ifNotExists;
   private String name;
   private final List<Column> definitions = new ArrayList<Column>();
@@ -17,7 +17,7 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   public CreateTableSegmentBuilder() {}
 
   public CreateTableSegmentBuilder temp() {
-    isTemp = true;
+    temp = true;
     return this;
   }
 
@@ -40,8 +40,14 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
 
   @Override
   public String build() {
-    String statement = "CREATE " + (isTemp ? "TEMP " : "") + "TABLE" + (ifNotExists ? " IF NOT EXISTS" : "");
-    return StringUtils.join(" ", statement, name + "(" + StringUtils.join(",", definitions.toArray()) + ")");
+    String head = "CREATE "
+      + (temp ? "TEMP " : "")
+      + "TABLE"
+      + (ifNotExists ? " IF NOT EXISTS" : "");
+
+    String tail = name + "(" + StringUtils.join(",", definitions.toArray()) + ")";
+
+    return StringUtils.join(" ", head, tail);
   }
 
 }
