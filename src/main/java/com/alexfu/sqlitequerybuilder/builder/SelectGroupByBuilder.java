@@ -1,5 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectGroupByBuilder extends SegmentBuilder {
@@ -13,6 +14,7 @@ public class SelectGroupByBuilder extends SegmentBuilder {
   }
 
   public SelectHavingBuilder having(String condition) {
+    Preconditions.checkNotNull(condition, "Condition cannot be null");
     return new SelectHavingBuilder(this, condition);
   }
 

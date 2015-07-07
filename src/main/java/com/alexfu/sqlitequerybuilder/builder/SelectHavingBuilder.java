@@ -1,5 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectHavingBuilder extends SegmentBuilder {
@@ -12,6 +13,7 @@ public class SelectHavingBuilder extends SegmentBuilder {
   }
 
   public SelectOrderByBuilder orderBy(String column) {
+    Preconditions.checkNotNull(column, "Column cannot be null");
     return new SelectOrderByBuilder(this, column);
   }
 

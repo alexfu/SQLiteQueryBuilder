@@ -1,5 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectFromBuilder extends SegmentBuilder {
@@ -13,34 +14,42 @@ public class SelectFromBuilder extends SegmentBuilder {
   }
 
   public SelectWhereBuilder where(String condition) {
+    Preconditions.checkNotNull(condition, "Condition cannot be null");
     return new SelectWhereBuilder(this, condition);
   }
 
   public SelectJoinBuilder join(String table) {
+    Preconditions.checkNotNull(table, "Table cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 
   public SelectJoinBuilder leftOuterJoin(String table) {
+    Preconditions.checkNotNull(table, "Table cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.LEFT_OUTER_JOIN);
   }
 
   public SelectJoinBuilder crossJoin(String table) {
+    Preconditions.checkNotNull(table, "Table cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.CROSS_JOIN);
   }
 
   public SelectJoinBuilder naturalJoin(String table) {
+    Preconditions.checkNotNull(table, "Table cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.NATURAL_JOIN);
   }
 
   public SelectJoinBuilder naturalLeftOuterJoin(String table) {
+    Preconditions.checkNotNull(table, "Table cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.NATURAL_LEFT_OUTER_JOIN);
   }
 
   public SelectOrderByBuilder orderBy(String column) {
+    Preconditions.checkNotNull(column, "Column cannot be null");
     return new SelectOrderByBuilder(this, column);
   }
 
   public SelectGroupByBuilder groupBy(String column) {
+    Preconditions.checkNotNull(column, "Column cannot be null");
     return new SelectGroupByBuilder(this, column);
   }
 

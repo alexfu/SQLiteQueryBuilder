@@ -49,4 +49,12 @@ public final class Preconditions {
 
     return reference;
   }
+
+  public static String checkNotEmpty(String name, String message) {
+    checkNotNull(name, message);
+    if (name.isEmpty()) {
+      throw new IllegalArgumentException(message);
+    }
+    return name;
+  }
 }

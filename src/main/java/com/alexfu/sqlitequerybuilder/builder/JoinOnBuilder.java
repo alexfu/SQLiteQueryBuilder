@@ -1,5 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class JoinOnBuilder extends SegmentBuilder {
@@ -13,10 +14,12 @@ public class JoinOnBuilder extends SegmentBuilder {
   }
 
   public SelectWhereBuilder where(String condition) {
+    Preconditions.checkNotNull(condition, "Condition cannot be null");
     return new SelectWhereBuilder(this, condition);
   }
 
   public SelectJoinBuilder join(String table) {
+    Preconditions.checkNotNull(table, "Table name cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 
