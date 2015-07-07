@@ -1,6 +1,7 @@
 package com.alexfu.sqlitequerybuilder.api;
 
 import com.alexfu.sqlitequerybuilder.builder.*;
+import com.alexfu.sqlitequerybuilder.builder.delete.DeleteBuilder;
 
 public class SQLiteQueryBuilder {
   public static SelectBuilder select(String... fields) {
@@ -17,5 +18,9 @@ public class SQLiteQueryBuilder {
   
   public static DropSegmentBuilder drop() {
   	return new DropSegmentBuilder();
+  }
+
+  public static DeleteBuilder delete() {
+    return new DeleteBuilder();
   }
 }
