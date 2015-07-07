@@ -7,5 +7,5 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: true     # default: false
 after_success:
-- ./gradlew jacocoTestReport coveralls
+- ./gradlew clean checkstyleMain checkstyleTest jacocoTestReport coveralls
 

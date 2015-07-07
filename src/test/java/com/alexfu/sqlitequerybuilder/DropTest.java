@@ -12,10 +12,10 @@ public class DropTest {
   public final void testDropTable() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .table("myTable")
-            .ifExists()
-            .toString();
+      .drop()
+      .table("myTable")
+      .ifExists()
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP TABLE IF EXISTS myTable");
@@ -25,9 +25,9 @@ public class DropTest {
   public final void testDropTableNoIfExists() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .table("myTable")
-            .toString();
+      .drop()
+      .table("myTable")
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP TABLE myTable");
@@ -37,10 +37,10 @@ public class DropTest {
   public final void testDropView() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .view("myView")
-            .ifExists()
-            .toString();
+      .drop()
+      .view("myView")
+      .ifExists()
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP VIEW IF EXISTS myView");
@@ -50,9 +50,9 @@ public class DropTest {
   public final void testDropViewNoIfExists() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .view("myView")
-            .toString();
+      .drop()
+      .view("myView")
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP VIEW myView");
@@ -62,10 +62,10 @@ public class DropTest {
   public final void testDropIndex() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .index("myIndex")
-            .ifExists()
-            .toString();
+      .drop()
+      .index("myIndex")
+      .ifExists()
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP INDEX IF EXISTS myIndex");
@@ -75,9 +75,9 @@ public class DropTest {
   public final void testDropIndexNoIfExists() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .index("myIndex")
-            .toString();
+      .drop()
+      .index("myIndex")
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP INDEX myIndex");
@@ -87,10 +87,10 @@ public class DropTest {
   public final void testDropTrigger() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .trigger("myTrigger")
-            .ifExists()
-            .toString();
+      .drop()
+      .trigger("myTrigger")
+      .ifExists()
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP TRIGGER IF EXISTS myTrigger");
@@ -100,9 +100,9 @@ public class DropTest {
   public final void testDropTriggerNoIfExists() {
     // Arrange and Act
     String statement = SQLiteQueryBuilder
-            .drop()
-            .trigger("myTrigger")
-            .toString();
+      .drop()
+      .trigger("myTrigger")
+      .toString();
 
     // Assert
     assertThat(statement).isEqualTo("DROP TRIGGER myTrigger");
