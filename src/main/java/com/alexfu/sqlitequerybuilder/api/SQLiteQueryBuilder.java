@@ -11,8 +11,8 @@ public class SQLiteQueryBuilder {
     return new SelectTypeBuilder(type);
   }
 
-  public static CreateBuilder create() {
-    return new CreateBuilder();
+  public static CreateTableSegmentBuilder create() {
+    return new CreateTableSegmentBuilder();
   }
   
   public static DropSegmentBuilder drop() {
