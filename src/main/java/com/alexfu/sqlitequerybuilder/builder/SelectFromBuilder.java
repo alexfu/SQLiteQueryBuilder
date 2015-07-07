@@ -44,6 +44,10 @@ public class SelectFromBuilder extends SegmentBuilder {
     return new SelectGroupByBuilder(this, column);
   }
 
+  public SelectLimitBuilder limit(int limit) {
+    return new SelectLimitBuilder(this, limit);
+  }
+
   @Override
   public String build() {
     return StringUtils.join(" ", prefix.build(), "FROM", StringUtils.join(",", tables));

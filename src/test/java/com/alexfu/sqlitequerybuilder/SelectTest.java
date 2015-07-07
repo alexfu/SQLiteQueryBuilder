@@ -135,11 +135,11 @@ public class SelectTest {
         .and("color = 'red'")
         .build();
 
-    assertThat(query).isEqualTo( "SELECT * FROM mytable WHERE id = 1 AND color = 'red'");
+    assertThat(query).isEqualTo("SELECT * FROM mytable WHERE id = 1 AND color = 'red'");
   }
 
   @Test
-  public void selectLimitTest() {
+  public void selectWhereLimitTest() {
     String query = SQLiteQueryBuilder
         .select("*")
         .from("mytable")
@@ -148,6 +148,17 @@ public class SelectTest {
         .build();
 
     assertThat(query).isEqualTo( "SELECT * FROM mytable WHERE id = 1 LIMIT 5");
+  }
+
+  @Test
+  public void selectLimitTest() {
+    String query = SQLiteQueryBuilder
+        .select("*")
+        .from("mytable")
+        .limit(5)
+        .build();
+
+    assertThat(query).isEqualTo( "SELECT * FROM mytable LIMIT 5");
   }
 
   @Test
