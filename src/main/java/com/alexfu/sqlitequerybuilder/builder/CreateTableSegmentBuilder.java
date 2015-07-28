@@ -33,7 +33,6 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   }
 
   public CreateTableSegmentBuilder table(String name) {
-    Preconditions.checkNotNull(name, "Table name can not be empty.");
     Preconditions.checkNotEmpty(name, "Table name can not be empty.");
     this.name = name;
     return this;
