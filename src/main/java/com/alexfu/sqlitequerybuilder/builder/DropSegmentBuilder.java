@@ -22,22 +22,22 @@ public class DropSegmentBuilder extends SegmentBuilder {
   }
 
   public DropSegmentBuilder table(String table) {
-    Preconditions.checkNotNull(table, "Table name cannot be null");
+    Preconditions.checkArgument(table != null, "Table name cannot be null");
     return new DropSegmentBuilder(ObjectType.TABLE, table);
   }
 
   public DropSegmentBuilder view(String view) {
-    Preconditions.checkNotNull(view, "View name cannot be null");
+    Preconditions.checkArgument(view != null, "View name cannot be null");
     return new DropSegmentBuilder(ObjectType.VIEW, view);
   }
 
   public DropSegmentBuilder index(String index) {
-    Preconditions.checkNotNull(index, "Index name cannot be null");
+    Preconditions.checkArgument(index != null, "Index name cannot be null");
     return new DropSegmentBuilder(ObjectType.INDEX, index);
   }
 
   public DropSegmentBuilder trigger(String trigger) {
-    Preconditions.checkNotNull(trigger, "Trigger name cannot be null");
+    Preconditions.checkArgument(trigger != null, "Trigger name cannot be null");
     return new DropSegmentBuilder(ObjectType.TRIGGER, trigger);
   }
 

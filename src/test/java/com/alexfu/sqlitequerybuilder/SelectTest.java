@@ -258,7 +258,7 @@ public class SelectTest {
     assertThat(query).isEqualTo("SELECT * FROM mytable ORDER BY age ASC");
   }
 
-  @Test(expected = NullPointerException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void testNullArgs() {
     SQLiteQueryBuilder
       .select("*")

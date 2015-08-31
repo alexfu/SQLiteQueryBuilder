@@ -14,12 +14,12 @@ public class JoinOnBuilder extends SegmentBuilder {
   }
 
   public SelectWhereBuilder where(String condition) {
-    Preconditions.checkNotNull(condition, "Condition cannot be null");
+    Preconditions.checkArgument(condition != null, "Condition cannot be null");
     return new SelectWhereBuilder(this, condition);
   }
 
   public SelectJoinBuilder join(String table) {
-    Preconditions.checkNotNull(table, "Table name cannot be null");
+    Preconditions.checkArgument(table != null, "Table name cannot be null");
     return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 

@@ -50,6 +50,21 @@ public final class Preconditions {
     return reference;
   }
 
+  /**
+   * Ensures the truth of an expression involving one or more parameters to the
+   * calling method.
+   *
+   * @param expression a boolean expression
+   * @param errorMessage the exception message to use if the check fails
+   * @throws IllegalArgumentException if {@code expression} is false
+   */
+  public static void checkArgument(
+    boolean expression, String errorMessage) {
+    if (!expression) {
+      throw new IllegalArgumentException(String.valueOf(errorMessage));
+    }
+  }
+
   public static String checkNotEmpty(String name, String message) {
     checkNotNull(name, message);
     if (name.isEmpty()) {

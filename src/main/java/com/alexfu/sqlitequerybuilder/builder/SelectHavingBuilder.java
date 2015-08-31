@@ -13,7 +13,7 @@ public class SelectHavingBuilder extends SegmentBuilder {
   }
 
   public SelectOrderByBuilder orderBy(String column) {
-    Preconditions.checkNotNull(column, "Column cannot be null");
+    Preconditions.checkArgument(column != null, "Column cannot be null");
     return new SelectOrderByBuilder(this, column);
   }
 

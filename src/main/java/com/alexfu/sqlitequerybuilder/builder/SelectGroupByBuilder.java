@@ -14,7 +14,7 @@ public class SelectGroupByBuilder extends SegmentBuilder {
   }
 
   public SelectHavingBuilder having(String condition) {
-    Preconditions.checkNotNull(condition, "Condition cannot be null");
+    Preconditions.checkArgument(condition != null, "Condition cannot be null");
     return new SelectHavingBuilder(this, condition);
   }
 

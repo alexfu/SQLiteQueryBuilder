@@ -18,7 +18,7 @@ public class SelectJoinBuilder extends SegmentBuilder {
   }
 
   public JoinOnBuilder on(String condition) {
-    Preconditions.checkNotNull(condition, "Condition cannot be null");
+    Preconditions.checkArgument(condition != null, "Condition cannot be null");
     return new JoinOnBuilder(this, condition);
   }
 

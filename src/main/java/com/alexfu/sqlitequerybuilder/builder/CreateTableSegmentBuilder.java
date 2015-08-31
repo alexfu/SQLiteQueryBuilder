@@ -27,7 +27,7 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   }
 
   public CreateTableSegmentBuilder column(Column column) {
-    Preconditions.checkNotNull(column, "A non-null column is required.");
+    Preconditions.checkArgument(column != null, "A non-null column is required.");
     definitions.add(column);
     return this;
   }

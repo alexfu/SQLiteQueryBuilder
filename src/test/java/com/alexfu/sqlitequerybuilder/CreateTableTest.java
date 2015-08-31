@@ -48,7 +48,7 @@ public class CreateTableTest {
       + "column3 TEXT NOT NULL)");
   }
 
-  @Test(expected = NullPointerException.class)
+  @Test(expected = IllegalArgumentException.class)
   public final void passNullColumnShouldThrowExeption() {
     // Act
     SQLiteQueryBuilder
