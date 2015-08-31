@@ -257,4 +257,12 @@ public class SelectTest {
 
     assertThat(query).isEqualTo("SELECT * FROM mytable ORDER BY age ASC");
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullArgs() {
+    SQLiteQueryBuilder
+      .select("*")
+      .from(null)
+      .build();
+  }
 }
