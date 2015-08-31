@@ -1,6 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class CreateTableSegmentBuilder extends SegmentBuilder {
 
-  private boolean isTemp;
+  private boolean temp;
   private boolean ifNotExists;
   private String name;
   private final List<Column> definitions = new ArrayList<Column>();
@@ -16,7 +17,7 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   public CreateTableSegmentBuilder() {}
 
   public CreateTableSegmentBuilder temp() {
-    isTemp = true;
+    temp = true;
     return this;
   }
 
@@ -26,25 +27,27 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   }
 
   public CreateTableSegmentBuilder column(Column column) {
-    if (column == null) {
-      throw new IllegalArgumentException("A non-null column is required.");
-    }
+    Preconditions.checkArgument(column != null, "A non-null column is required.");
     definitions.add(column);
     return this;
   }
 
   public CreateTableSegmentBuilder table(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Table name can not be empty.");
-    }
+    Preconditions.checkNotEmpty(name, "Table name can not be empty.");
     this.name = name;
     return this;
   }
 
   @Override
   public String build() {
-    String statement = "CREATE " + (isTemp ? "TEMP " : "") + "TABLE" + (ifNotExists ? " IF NOT EXISTS" : "");
-    return StringUtils.join(" ", statement, name + "(" + StringUtils.join(",", definitions.toArray()) + ")");
+    String head = "CREATE "
+      + (temp ? "TEMP " : "")
+      + "TABLE"
+      + (ifNotExists ? " IF NOT EXISTS" : "");
+
+    String tail = name + "(" + StringUtils.join(",", definitions.toArray()) + ")";
+
+    return StringUtils.join(" ", head, tail);
   }
 
 }

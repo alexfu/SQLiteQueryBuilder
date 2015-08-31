@@ -18,10 +18,10 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(column)
-            .toString();
+      .create()
+      .table("myTable")
+      .column(column)
+      .toString();
 
     // Assert
     assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY)");
@@ -36,25 +36,26 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(column1)
-            .column(column2)
-            .column(column3)
-            .toString();
+      .create()
+      .table("myTable")
+      .column(column1)
+      .column(column2)
+      .column(column3)
+      .toString();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 TEXT,column3 TEXT NOT NULL)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 TEXT,"
+      + "column3 TEXT NOT NULL)");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public final void passNullColumnShouldThrowExeption() {
     // Act
     SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(null)
-            .toString();
+      .create()
+      .table("myTable")
+      .column(null)
+      .toString();
   }
 
   @Test
@@ -64,11 +65,11 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .ifNotExists()
-            .column(column)
-            .toString();
+      .create()
+      .table("myTable")
+      .ifNotExists()
+      .column(column)
+      .toString();
 
     // Assert
     assertThat(query).isEqualTo("CREATE TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
@@ -79,11 +80,11 @@ public class CreateTableTest {
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
     String query = SQLiteQueryBuilder
-            .create()
-            .temp()
-            .table("myTable")
-            .column(column)
-            .build();
+      .create()
+      .temp()
+      .table("myTable")
+      .column(column)
+      .build();
 
     assertThat(query).isEqualTo("CREATE TEMP TABLE myTable(column1 INTEGER PRIMARY KEY)");
   }
@@ -93,14 +94,15 @@ public class CreateTableTest {
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
     String query = SQLiteQueryBuilder
-            .create()
-            .temp()
-            .table("myTable")
-            .ifNotExists()
-            .column(column)
-            .build();
+      .create()
+      .temp()
+      .table("myTable")
+      .ifNotExists()
+      .column(column)
+      .build();
 
-    assertThat(query).isEqualTo("CREATE TEMP TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
+    assertThat(query).isEqualTo("CREATE TEMP TABLE IF NOT EXISTS myTable(column1 INTEGER "
+      + "PRIMARY KEY)");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -108,10 +110,10 @@ public class CreateTableTest {
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
     SQLiteQueryBuilder
-            .create()
-            .table("")
-            .column(column)
-            .build();
+      .create()
+      .table("")
+      .column(column)
+      .build();
   }
 
 }
