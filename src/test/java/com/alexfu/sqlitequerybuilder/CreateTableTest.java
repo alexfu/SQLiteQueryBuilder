@@ -48,6 +48,22 @@ public class CreateTableTest {
       + "column3 TEXT NOT NULL)");
   }
 
+  @Test
+  public final void testCreateTableWithDefaultColumnValue() {
+    // Arrange
+    Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY, "0");
+
+    // Act
+    String query = SQLiteQueryBuilder
+      .create()
+      .table("myTable")
+      .column(column)
+      .toString();
+
+    // Assert
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY DEFAULT 0)");
+  }
+
   @Test(expected = IllegalArgumentException.class)
   public final void passNullColumnShouldThrowExeption() {
     // Act
