@@ -7,26 +7,21 @@ public class Column implements Builder {
   private final String name;
   private final ColumnType type;
   private final ColumnConstraint constraint;
+  private final String defaultValue;
 
-  /**
-   * @param name
-   * @param type
-   * @param constraint
-   */
+  public Column(String name, ColumnType type) {
+    this(name, type, null);
+  }
+
   public Column(String name, ColumnType type, ColumnConstraint constraint) {
+    this(name, type, constraint, null);
+  }
+
+  public Column(String name, ColumnType type, ColumnConstraint constraint, String defaultValue) {
     this.name = name;
     this.type = type;
     this.constraint = constraint;
-  }
-
-  /**
-   * @param name
-   * @param type
-   */
-  public Column(String name, ColumnType type) {
-    this.name = name;
-    this.type = type;
-    this.constraint = null;
+    this.defaultValue = defaultValue;
   }
 
   @Override
@@ -34,6 +29,9 @@ public class Column implements Builder {
     String result = StringUtils.join(" ", name, type.toString());
     if (constraint != null) {
       result = StringUtils.join(" ", result, constraint.toString());
+    }
+    if (defaultValue != null) {
+      result = StringUtils.join(" ", result, "DEFAULT", defaultValue);
     }
     return result;
   }
