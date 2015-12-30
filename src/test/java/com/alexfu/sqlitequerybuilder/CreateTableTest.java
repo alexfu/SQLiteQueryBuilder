@@ -55,10 +55,10 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(column)
-            .toString();
+      .create()
+      .table("myTable")
+      .column(column)
+      .toString();
 
     // Assert
     assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY DEFAULT 0)");
