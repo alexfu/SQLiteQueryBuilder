@@ -135,7 +135,7 @@ public class CreateTableTest {
   @Test
   public final void createTablePrimaryKeyAutoIncrement() {
     Column column = new Column("column1", ColumnType.INTEGER,
-            ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
+      ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
 
     String query = SQLiteQueryBuilder
       .create()
