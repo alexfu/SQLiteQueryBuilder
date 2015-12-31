@@ -132,4 +132,18 @@ public class CreateTableTest {
       .build();
   }
 
+  @Test
+  public final void createTablePrimaryKeyAutoIncrement() {
+    Column column = new Column("column1", ColumnType.INTEGER,
+      ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
+
+    String query = SQLiteQueryBuilder
+      .create()
+      .table("myTable")
+      .column(column)
+      .build();
+
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY AUTOINCREMENT)");
+  }
+
 }
