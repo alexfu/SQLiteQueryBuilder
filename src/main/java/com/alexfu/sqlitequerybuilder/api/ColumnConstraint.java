@@ -3,6 +3,7 @@ package com.alexfu.sqlitequerybuilder.api;
 public enum ColumnConstraint {
 
   PRIMARY_KEY("PRIMARY KEY"),
+  PRIMARY_KEY_AUTO_INCREMENT("PRIMARY KEY AUTOINCREMENT"),
   UNIQUE("UNIQUE"),
   CHECK("CHECK"),
   FOREIGN_KEY("FOREIGN KEY"),

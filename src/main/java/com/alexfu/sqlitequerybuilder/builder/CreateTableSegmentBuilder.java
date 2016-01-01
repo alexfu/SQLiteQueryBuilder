@@ -1,6 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -26,17 +27,13 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   }
 
   public CreateTableSegmentBuilder column(Column column) {
-    if (column == null) {
-      throw new IllegalArgumentException("A non-null column is required.");
-    }
+    Preconditions.checkArgument(column != null, "A non-null column is required.");
     definitions.add(column);
     return this;
   }
 
   public CreateTableSegmentBuilder table(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Table name can not be empty.");
-    }
+    Preconditions.checkNotEmpty(name, "Table name can not be empty.");
     this.name = name;
     return this;
   }
