@@ -140,6 +140,20 @@ public class SelectTest {
   }
 
   @Test
+  public void selectAndAndTest() {
+    String query = SQLiteQueryBuilder
+      .select("*")
+      .from("mytable")
+      .where("id = 1")
+      .and("color = 'red'")
+      .and("color = 'blue'")
+      .build();
+
+    assertThat(query).isEqualTo("SELECT * FROM mytable WHERE id = 1 AND color = 'red' " +
+      "AND color = 'blue'");
+  }
+
+  @Test
   public void selectWhereLimitTest() {
     String query = SQLiteQueryBuilder
       .select("*")
