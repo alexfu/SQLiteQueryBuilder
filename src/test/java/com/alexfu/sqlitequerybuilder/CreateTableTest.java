@@ -2,6 +2,7 @@ package com.alexfu.sqlitequerybuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.alexfu.sqlitequerybuilder.utils.ConnectionUtils;
 import org.junit.Test;
 
 import com.alexfu.sqlitequerybuilder.api.Column;
@@ -9,22 +10,31 @@ import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
 import com.alexfu.sqlitequerybuilder.api.ColumnType;
 import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
 
-public class CreateTableTest {
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public final class CreateTableTest extends SQLiteTest {
 
   @Test
-  public final void testCreateTableWithOneColumn() {
+  public final void testCreateTableWithOneColumn() throws SQLException {
     // Arrange
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
     // Act
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .column(column)
       .toString();
 
+    statement.execute(sql);
+
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY)");
+    List<String> tables = ConnectionUtils.tables(connection);
+    assertThat(tables).contains("myTable");
   }
 
   @Test
