@@ -3,6 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'idea'
 
 group = 'com.github.alexfu'
 
@@ -33,6 +34,7 @@ jacocoTestReport {
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:2.0.0'
+    testCompile 'org.xerial:sqlite-jdbc:3.8.11.2'
 }
 
 checkstyle {
