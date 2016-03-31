@@ -5,11 +5,13 @@ import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
 import com.alexfu.sqlitequerybuilder.api.ColumnType;
 import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
 import com.alexfu.sqlitequerybuilder.utils.ConnectionUtils;
+import com.alexfu.sqlitequerybuilder.utils.TestUtils;
 import org.junit.Test;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.alexfu.sqlitequerybuilder.utils.TestUtils.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class CreateTableTest extends SQLiteTest {
@@ -29,19 +31,19 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    List<String> tables = ConnectionUtils.tables(connection);
-    assertThat(tables).contains("myTable");
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
   @Test
-  public final void testCreateTableWithMultipleColumns() {
+  public final void testCreateTableWithMultipleColumns() throws SQLException {
     // Arrange
     Column column1 = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
     Column column2 = new Column("column2", ColumnType.TEXT);
     Column column3 = new Column("column3", ColumnType.TEXT, ColumnConstraint.NOT_NULL);
 
     // Act
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .column(column1)
@@ -49,9 +51,11 @@ public final class CreateTableTest extends SQLiteTest {
       .column(column3)
       .toString();
 
+    statement.execute(sql);
+
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 TEXT,"
-      + "column3 TEXT NOT NULL)");
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1", "column2", "column3");
   }
 
   @Test
