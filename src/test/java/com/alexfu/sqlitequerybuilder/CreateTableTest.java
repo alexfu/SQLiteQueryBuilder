@@ -4,15 +4,11 @@ import com.alexfu.sqlitequerybuilder.api.Column;
 import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
 import com.alexfu.sqlitequerybuilder.api.ColumnType;
 import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
-import com.alexfu.sqlitequerybuilder.utils.ConnectionUtils;
-import com.alexfu.sqlitequerybuilder.utils.TestUtils;
 import org.junit.Test;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import static com.alexfu.sqlitequerybuilder.utils.TestUtils.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public final class CreateTableTest extends SQLiteTest {
 
@@ -59,19 +55,22 @@ public final class CreateTableTest extends SQLiteTest {
   }
 
   @Test
-  public final void testCreateTableWithDefaultColumnValue() {
+  public final void testCreateTableWithDefaultColumnValue() throws SQLException {
     // Arrange
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY, "0");
 
     // Act
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .column(column)
       .toString();
 
+    statement.execute(sql);
+
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY DEFAULT 0)");
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -85,41 +84,48 @@ public final class CreateTableTest extends SQLiteTest {
   }
 
   @Test
-  public final void createTableIfNotExists() {
+  public final void createTableIfNotExists() throws SQLException {
     // Arrange
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
     // Act
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .ifNotExists()
       .column(column)
       .toString();
 
+    statement.execute(sql);
+
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE IF NOT EXISTS myTable(column1 INTEGER PRIMARY KEY)");
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
   @Test
-  public final void createTempTable() {
+  public final void createTempTable() throws SQLException {
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .temp()
       .table("myTable")
       .column(column)
       .build();
 
-    assertThat(query).isEqualTo("CREATE TEMP TABLE myTable(column1 INTEGER PRIMARY KEY)");
+    statement.execute(sql);
+
+    // Assert
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
   @Test
-  public final void createTempTableIfNotExists() {
+  public final void createTempTableIfNotExists() throws SQLException {
     Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
 
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .temp()
       .table("myTable")
@@ -127,8 +133,11 @@ public final class CreateTableTest extends SQLiteTest {
       .column(column)
       .build();
 
-    assertThat(query).isEqualTo("CREATE TEMP TABLE IF NOT EXISTS myTable(column1 INTEGER "
-      + "PRIMARY KEY)");
+    statement.execute(sql);
+
+    // Assert
+    assertOnlyTablesExists(connection, "myTable");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -143,17 +152,21 @@ public final class CreateTableTest extends SQLiteTest {
   }
 
   @Test
-  public final void createTablePrimaryKeyAutoIncrement() {
+  public final void createTablePrimaryKeyAutoIncrement() throws SQLException {
     Column column = new Column("column1", ColumnType.INTEGER,
       ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
 
-    String query = SQLiteQueryBuilder
+    String sql = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .column(column)
       .build();
 
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY AUTOINCREMENT)");
+    statement.execute(sql);
+
+    // Assert
+    assertTablesExists(connection, "myTable", "sqlite_sequence");
+    assertOnlyColumnsExists(connection, "myTable", "column1");
   }
 
 }
