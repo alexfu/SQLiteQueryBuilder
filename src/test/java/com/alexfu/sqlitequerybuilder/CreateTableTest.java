@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import java.sql.SQLException;
 
-import static com.alexfu.sqlitequerybuilder.utils.TestUtils.*;
+import static com.alexfu.sqlitequerybuilder.utils.ConnectionUtils.columns;
+import static com.alexfu.sqlitequerybuilder.utils.ConnectionUtils.tables;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public final class CreateTableTest extends SQLiteTest {
 
@@ -27,8 +29,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
   @Test
@@ -50,8 +52,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1", "column2", "column3");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1", "column2", "column3");
   }
 
   @Test
@@ -69,8 +71,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -99,8 +101,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
   @Test
@@ -117,8 +119,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
   @Test
@@ -136,8 +138,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertOnlyTablesExists(connection, "myTable");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -165,8 +167,8 @@ public final class CreateTableTest extends SQLiteTest {
     statement.execute(sql);
 
     // Assert
-    assertTablesExists(connection, "myTable", "sqlite_sequence");
-    assertOnlyColumnsExists(connection, "myTable", "column1");
+    assertThat(tables(connection)).containsOnly("myTable", "sqlite_sequence");
+    assertThat(columns(connection, "myTable")).containsOnly("column1");
   }
 
 }
