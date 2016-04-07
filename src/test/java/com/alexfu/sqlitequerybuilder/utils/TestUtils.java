@@ -1,5 +1,7 @@
 package com.alexfu.sqlitequerybuilder.utils;
 
+import org.assertj.core.api.AbstractListAssert;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -10,6 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Created by alexfu on 3/31/16.
  */
 public class TestUtils {
+
+  public static AbstractListAssert<?, ? extends List<? extends String>, String> assertTables(Connection connection) throws SQLException {
+    List<String> tableList = ConnectionUtils.tables(connection);
+    return assertThat(tableList);
+  }
+
   public static void assertTablesExists(Connection connection, String... tables)
     throws SQLException {
 
