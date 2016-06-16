@@ -13,6 +13,7 @@
 
 **Closed issues:**
 
+- Add a CHANGELOG [\#45](https://github.com/alexfu/SQLiteQueryBuilder/issues/45)
 - Add information about licensing [\#37](https://github.com/alexfu/SQLiteQueryBuilder/issues/37)
 - Add argument checks and fail early [\#9](https://github.com/alexfu/SQLiteQueryBuilder/issues/9)
 
