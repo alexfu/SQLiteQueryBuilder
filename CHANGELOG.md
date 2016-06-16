@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/alexfu/SQLiteQueryBuilder/tree/HEAD)
-
-[Full Changelog](https://github.com/alexfu/SQLiteQueryBuilder/compare/0.2.0...HEAD)
+## [0.3.0](https://github.com/alexfu/SQLiteQueryBuilder/tree/0.3.0) (2016-06-16)
+[Full Changelog](https://github.com/alexfu/SQLiteQueryBuilder/compare/0.2.0...0.3.0)
 
 **Fixed bugs:**
 
