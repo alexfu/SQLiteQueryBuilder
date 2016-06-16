@@ -14,7 +14,7 @@ public class SelectLimitBuilder extends SegmentBuilder {
     this.limit = limit;
   }
 
-  public SelectLimitBuilder offset(int offset) {
+  public SegmentBuilder offset(int offset) {
     this.offset = offset;
     return this;
   }

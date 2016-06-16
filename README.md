@@ -24,11 +24,18 @@ String sql = SQLiteQueryBuilder
 	.toString();
 ```
 
-You can view more examples in the [src/test/java](https://github.com/alexfu/SQLiteQueryBuilder/tree/master/src/test/java) folder.
+You can view more examples in the [src/test/java](src/test/java) folder.
 
-To use this library, you'll have to generate the jar file and copy it to your projects lib directory (until I get the chance to publish to Maven Central)...
+To use this library, add the follow to your gradle build:
 
-```
-./gradlew jar
-cp build/libs/SQLiteQueryBuilder-VERSION.jar /path/to/my/project/libs
+```groovy
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile 'com.github.alexfu:SQLiteQueryBuilder:0.1.1'
+}
 ```
