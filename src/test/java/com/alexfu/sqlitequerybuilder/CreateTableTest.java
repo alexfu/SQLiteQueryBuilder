@@ -2,12 +2,8 @@ package com.alexfu.sqlitequerybuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.alexfu.sqlitequerybuilder.api.*;
 import org.junit.Test;
-
-import com.alexfu.sqlitequerybuilder.api.Column;
-import com.alexfu.sqlitequerybuilder.api.ColumnConstraint;
-import com.alexfu.sqlitequerybuilder.api.ColumnType;
-import com.alexfu.sqlitequerybuilder.api.SQLiteQueryBuilder;
 
 public class CreateTableTest {
 
@@ -137,13 +133,33 @@ public class CreateTableTest {
     Column column = new Column("column1", ColumnType.INTEGER,
       ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
 
+    ForeignKeyConstraint constraint = new ForeignKeyConstraint("childKey", "parentTable", "parentKey");
+
     String query = SQLiteQueryBuilder
       .create()
       .table("myTable")
       .column(column)
+      .foreignKey(constraint)
       .build();
 
     assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY AUTOINCREMENT)");
   }
 
+  @Test
+  public final void createTableWithForeignKey() {
+    // Arrange
+    Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
+    ForeignKeyConstraint constraint = new ForeignKeyConstraint("childKey", "parentTable", "parentKey");
+
+    // Act
+    String query = SQLiteQueryBuilder
+            .create()
+            .table("myTable")
+            .column(column)
+            .foreignKey(constraint)
+            .toString();
+
+    // Assert
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY) FOREIGN KEY(childKey) REFERENCES parentTable(parentKey)");
+  }
 }
