@@ -148,20 +148,21 @@ public class CreateTableTest {
     Column column1 = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
     Column column2 = new Column("column2", ColumnType.INTEGER);
 
-    ForeignKeyConstraint constraint = new ForeignKeyConstraint("column2", "parentTable", "parentKey");
+    ForeignKeyConstraint constraint =
+            new ForeignKeyConstraint("column2", "parentTable", "parentKey");
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(column1)
-            .column(column2)
-            .foreignKey(constraint)
-            .toString();
+      .create()
+      .table("myTable")
+      .column(column1)
+      .column(column2)
+      .foreignKey(constraint)
+      .toString();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER)" +
-            " FOREIGN KEY(column2) REFERENCES parentTable(parentKey)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY," +
+      "column2 INTEGER)" + " FOREIGN KEY(column2) REFERENCES parentTable(parentKey)");
   }
 
   @Test
@@ -176,18 +177,19 @@ public class CreateTableTest {
 
     // Act
     String query = SQLiteQueryBuilder
-            .create()
-            .table("myTable")
-            .column(column1)
-            .column(column2)
-            .column(column3)
-            .foreignKey(fk1)
-            .foreignKey(fk2)
-            .build();
+      .create()
+      .table("myTable")
+      .column(column1)
+      .column(column2)
+      .column(column3)
+      .foreignKey(fk1)
+      .foreignKey(fk2)
+      .build();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER," +
-            "column3 TEXT) FOREIGN KEY(column2) REFERENCES parentTable1(parentKey1)," +
-            "FOREIGN KEY(column3) REFERENCES parentTable2(parentKey2)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY," +
+      "column2 INTEGER,column3 TEXT) " +
+      "FOREIGN KEY(column2) REFERENCES parentTable1(parentKey1)," +
+      "FOREIGN KEY(column3) REFERENCES parentTable2(parentKey2)");
   }
 }
