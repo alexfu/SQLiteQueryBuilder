@@ -139,27 +139,54 @@ public class CreateTableTest {
       .create()
       .table("myTable")
       .column(column)
-      .foreignKey(constraint)
       .build();
 
     assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY AUTOINCREMENT)");
   }
 
   @Test
-  public final void createTableWithForeignKey() {
+  public final void createTableWithSingleForeignKey() {
     // Arrange
-    Column column = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
-    ForeignKeyConstraint constraint = new ForeignKeyConstraint("childKey", "parentTable", "parentKey");
+    Column column1 = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
+    Column column2 = new Column("column2", ColumnType.INTEGER);
+
+    ForeignKeyConstraint constraint = new ForeignKeyConstraint("column2", "parentTable", "parentKey");
 
     // Act
     String query = SQLiteQueryBuilder
             .create()
             .table("myTable")
-            .column(column)
+            .column(column1)
+            .column(column2)
             .foreignKey(constraint)
             .toString();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY) FOREIGN KEY(childKey) REFERENCES parentTable(parentKey)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER) FOREIGN KEY(column2) REFERENCES parentTable(parentKey)");
+  }
+
+  @Test
+  public final void createTableWithMultipleForeignKeys() {
+    // Arrange
+    Column column1 = new Column("column1", ColumnType.INTEGER, ColumnConstraint.PRIMARY_KEY);
+    Column column2 = new Column("column2", ColumnType.INTEGER);
+    Column column3 = new Column("column3", ColumnType.TEXT);
+
+    ForeignKeyConstraint fk1 = new ForeignKeyConstraint("column2", "parentTable1", "parentKey1");
+    ForeignKeyConstraint fk2 = new ForeignKeyConstraint("column3", "parentTable2", "parentKey2");
+
+    // Act
+    String query = SQLiteQueryBuilder
+            .create()
+            .table("myTable")
+            .column(column1)
+            .column(column2)
+            .column(column3)
+            .foreignKey(fk1)
+            .foreignKey(fk2)
+            .build();
+
+    // Assert
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER,column3 TEXT) FOREIGN KEY(column2) REFERENCES parentTable1(parentKey1),FOREIGN KEY(column3) REFERENCES parentTable2(parentKey2)");
   }
 }

@@ -54,9 +54,11 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
       + (ifNotExists ? " IF NOT EXISTS" : "");
 
     String tail = name + "(" + StringUtils.join(",", definitions.toArray()) + ")";
-    String constraint = StringUtils.join(" ", constraints.toArray());
+    if (!constraints.isEmpty()) {
+      String constraint = StringUtils.join(",", constraints.toArray());
+      return StringUtils.join(" ", head, tail, constraint);
+    }
 
-    return StringUtils.join(" ", head, tail, constraint);
+    return StringUtils.join(" ", head, tail);
   }
-
 }
