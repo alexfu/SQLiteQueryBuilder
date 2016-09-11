@@ -133,8 +133,6 @@ public class CreateTableTest {
     Column column = new Column("column1", ColumnType.INTEGER,
       ColumnConstraint.PRIMARY_KEY_AUTO_INCREMENT);
 
-    ForeignKeyConstraint constraint = new ForeignKeyConstraint("childKey", "parentTable", "parentKey");
-
     String query = SQLiteQueryBuilder
       .create()
       .table("myTable")
