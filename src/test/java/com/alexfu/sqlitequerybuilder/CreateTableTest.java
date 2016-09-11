@@ -160,7 +160,8 @@ public class CreateTableTest {
             .toString();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER) FOREIGN KEY(column2) REFERENCES parentTable(parentKey)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER)" +
+            " FOREIGN KEY(column2) REFERENCES parentTable(parentKey)");
   }
 
   @Test
@@ -185,6 +186,8 @@ public class CreateTableTest {
             .build();
 
     // Assert
-    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER,column3 TEXT) FOREIGN KEY(column2) REFERENCES parentTable1(parentKey1),FOREIGN KEY(column3) REFERENCES parentTable2(parentKey2)");
+    assertThat(query).isEqualTo("CREATE TABLE myTable(column1 INTEGER PRIMARY KEY,column2 INTEGER," +
+            "column3 TEXT) FOREIGN KEY(column2) REFERENCES parentTable1(parentKey1)," +
+            "FOREIGN KEY(column3) REFERENCES parentTable2(parentKey2)");
   }
 }

@@ -21,6 +21,7 @@ public class ForeignKeyConstraint implements Builder {
 
   @Override
   public String build() {
-    return StringUtils.join("", "FOREIGN KEY", "(", childKey, ") ", "REFERENCES ", parentTable, "(", parentKey, ")");
+    return StringUtils.join("", "FOREIGN KEY", "(", childKey, ") ",
+      "REFERENCES ", parentTable, "(", parentKey, ")");
   }
 }
