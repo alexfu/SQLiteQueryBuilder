@@ -149,7 +149,7 @@ public class CreateTableTest {
     Column column2 = new Column("column2", ColumnType.INTEGER);
 
     ForeignKeyConstraint constraint =
-            new ForeignKeyConstraint("column2", "parentTable", "parentKey");
+      new ForeignKeyConstraint("column2", "parentTable", "parentKey");
 
     // Act
     String query = SQLiteQueryBuilder
