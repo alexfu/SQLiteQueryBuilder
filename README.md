@@ -24,7 +24,7 @@ String sql = SQLiteQueryBuilder
 	.toString();
 ```
 
-You can view more examples in the [src/test/java](https://github.com/alexfu/SQLiteQueryBuilder/tree/master/src/test/java) folder.
+You can view more examples in the [src/test/java](src/test/java) folder.
 
 To use this library, add the follow to your gradle build:
 

@@ -8,7 +8,7 @@ group = 'com.github.alexfu'
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
 
     dependencies {
@@ -17,10 +17,10 @@ buildscript {
 }
 
 sourceCompatibility = 1.5
-version = '0.2.0'
+version = '0.3.0'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 jacocoTestReport {
