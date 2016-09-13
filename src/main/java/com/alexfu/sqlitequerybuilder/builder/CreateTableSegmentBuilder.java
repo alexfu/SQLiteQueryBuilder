@@ -1,6 +1,7 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
 import com.alexfu.sqlitequerybuilder.api.Column;
+import com.alexfu.sqlitequerybuilder.api.ForeignKeyConstraint;
 import com.alexfu.sqlitequerybuilder.utils.Preconditions;
 import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
@@ -13,6 +14,7 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
   private boolean ifNotExists;
   private String name;
   private final List<Column> definitions = new ArrayList<Column>();
+  private final List<ForeignKeyConstraint> constraints = new ArrayList<ForeignKeyConstraint>();
 
   public CreateTableSegmentBuilder() {}
 
@@ -38,6 +40,12 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
     return this;
   }
 
+  public CreateTableSegmentBuilder foreignKey(ForeignKeyConstraint constraint) {
+    Preconditions.checkArgument(constraint != null, "A non-null constraint is required.");
+    constraints.add(constraint);
+    return this;
+  }
+
   @Override
   public String build() {
     String head = "CREATE "
@@ -46,8 +54,11 @@ public class CreateTableSegmentBuilder extends SegmentBuilder {
       + (ifNotExists ? " IF NOT EXISTS" : "");
 
     String tail = name + "(" + StringUtils.join(",", definitions.toArray()) + ")";
+    if (!constraints.isEmpty()) {
+      String constraint = StringUtils.join(",", constraints.toArray());
+      return StringUtils.join(" ", head, tail, constraint);
+    }
 
     return StringUtils.join(" ", head, tail);
   }
-
 }
