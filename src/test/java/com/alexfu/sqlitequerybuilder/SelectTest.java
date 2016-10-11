@@ -128,6 +128,43 @@ public class SelectTest {
   }
 
   @Test
+  public void selectMultiLeftOuterJoinTest() {
+    String query = SQLiteQueryBuilder
+      .select("*")
+      .from("mytable")
+      .join("secondtable")
+      .on("mytable.id = secondtable.id")
+      .leftOuterJoin("thirdtable")
+      .on("secondtable.id = thirdtable.id")
+      .where("id = 1")
+      .build();
+
+    assertThat(query).isEqualTo("SELECT * FROM mytable JOIN secondtable ON "
+      + "mytable.id = secondtable.id "
+      + "LEFT OUTER JOIN thirdtable ON secondtable.id = thirdtable.id WHERE id = 1");
+  }
+
+  @Test
+  public void selectComplexLJoinTest() {
+    String query = SQLiteQueryBuilder
+      .select("*")
+      .from("mytable")
+      .leftOuterJoin("secondtable")
+      .on("mytable.id = secondtable.id")
+      .leftOuterJoin("thirdtable")
+      .on("secondtable.id = thirdtable.id")
+      .leftOuterJoin("fourthtable")
+      .on("secondtable.id = fourthtable.id")
+      .where("id = 1")
+      .build();
+
+    assertThat(query).isEqualTo("SELECT * FROM mytable "
+      + "LEFT OUTER JOIN secondtable ON mytable.id = secondtable.id "
+      + "LEFT OUTER JOIN thirdtable ON secondtable.id = thirdtable.id "
+      + "LEFT OUTER JOIN fourthtable ON secondtable.id = fourthtable.id WHERE id = 1");
+  }
+
+  @Test
   public void selectAndTest() {
     String query = SQLiteQueryBuilder
       .select("*")

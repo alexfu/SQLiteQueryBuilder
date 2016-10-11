@@ -23,6 +23,11 @@ public class JoinOnBuilder extends SegmentBuilder {
     return new SelectJoinBuilder(this, table, JoinType.JOIN);
   }
 
+  public SelectJoinBuilder leftOuterJoin(String table) {
+    Preconditions.checkArgument(table != null, "Table cannot be null");
+    return new SelectJoinBuilder(this, table, JoinType.LEFT_OUTER_JOIN);
+  }
+
   @Override
   public String build() {
     return StringUtils.join(" ", prefix.build(), "ON", condition);
