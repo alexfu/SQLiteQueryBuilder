@@ -8,7 +8,7 @@ public class SelectOrderByBuilder extends SegmentBuilder {
   private Builder prefix;
   private String column;
 
-  public SelectOrderByBuilder(Builder prefix, String column) {
+  SelectOrderByBuilder(Builder prefix, String column) {
     this.prefix = prefix;
     this.column = column;
   }

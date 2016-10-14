@@ -11,7 +11,7 @@ public class SelectJoinBuilder extends SegmentBuilder {
   private String table;
   private JoinType joinType;
 
-  public SelectJoinBuilder(Builder prefix, String table, JoinType joinType) {
+  SelectJoinBuilder(Builder prefix, String table, JoinType joinType) {
     this.prefix = prefix;
     this.table = table;
     this.joinType = joinType;

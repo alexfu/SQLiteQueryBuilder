@@ -1,6 +1,6 @@
 package com.alexfu.sqlitequerybuilder.builder;
 
-public enum JoinType {
+enum JoinType {
   JOIN("JOIN"),
   CROSS_JOIN("CROSS JOIN"),
   LEFT_OUTER_JOIN("LEFT OUTER JOIN"),

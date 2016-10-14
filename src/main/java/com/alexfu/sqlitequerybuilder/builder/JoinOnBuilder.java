@@ -8,7 +8,7 @@ public class JoinOnBuilder extends SegmentBuilder {
   private SelectJoinBuilder prefix;
   private String condition;
 
-  public JoinOnBuilder(SelectJoinBuilder prefix, String condition) {
+  JoinOnBuilder(SelectJoinBuilder prefix, String condition) {
     this.prefix = prefix;
     this.condition = condition;
   }

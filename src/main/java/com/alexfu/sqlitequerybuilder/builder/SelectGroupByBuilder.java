@@ -8,7 +8,7 @@ public class SelectGroupByBuilder extends SegmentBuilder {
   private SelectFromBuilder prefix;
   private String column;
 
-  public SelectGroupByBuilder(SelectFromBuilder prefix, String column) {
+  SelectGroupByBuilder(SelectFromBuilder prefix, String column) {
     this.prefix = prefix;
     this.column = column;
   }

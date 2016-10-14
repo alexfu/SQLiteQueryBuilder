@@ -10,7 +10,7 @@ public class InsertValuesBuilder extends SegmentBuilder {
   private final SegmentBuilder predicate;
   private final Object[] values;
 
-  public InsertValuesBuilder(SegmentBuilder predicate, Object[] values) {
+  InsertValuesBuilder(SegmentBuilder predicate, Object[] values) {
     this.predicate = predicate;
     this.values = clean(values);
   }
