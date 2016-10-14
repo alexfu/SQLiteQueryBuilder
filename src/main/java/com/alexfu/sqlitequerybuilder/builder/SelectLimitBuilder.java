@@ -9,7 +9,7 @@ public class SelectLimitBuilder extends SegmentBuilder {
   private int limit = -1;
   private int offset = -1;
 
-  public SelectLimitBuilder(Builder prefix, int limit) {
+  SelectLimitBuilder(Builder prefix, int limit) {
     this.prefix = prefix;
     this.limit = limit;
   }

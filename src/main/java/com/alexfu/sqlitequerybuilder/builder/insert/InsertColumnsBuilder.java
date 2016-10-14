@@ -9,7 +9,7 @@ public class InsertColumnsBuilder extends SegmentBuilder {
   private final SegmentBuilder predicate;
   private final String[] columns;
 
-  public InsertColumnsBuilder(SegmentBuilder predicate, String[] columns) {
+  InsertColumnsBuilder(SegmentBuilder predicate, String[] columns) {
     this.predicate = predicate;
     this.columns = columns;
   }

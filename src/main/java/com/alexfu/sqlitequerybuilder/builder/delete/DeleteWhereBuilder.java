@@ -10,7 +10,7 @@ public class DeleteWhereBuilder extends SegmentBuilder {
   private Builder prefix;
   private String condition;
 
-  public DeleteWhereBuilder(Builder prefix, String condition) {
+  DeleteWhereBuilder(Builder prefix, String condition) {
     this.condition = condition;
     this.prefix = prefix;
   }

@@ -4,14 +4,14 @@ import com.alexfu.sqlitequerybuilder.utils.StringUtils;
 
 public class SelectOrderTermBuilder extends SegmentBuilder {
 
-  public enum Term {
+  enum Term {
     ASC, DESC
   }
 
   private SelectOrderByBuilder prefix;
   private Term term;
 
-  public SelectOrderTermBuilder(SelectOrderByBuilder prefix, Term term) {
+  SelectOrderTermBuilder(SelectOrderByBuilder prefix, Term term) {
     this.prefix = prefix;
     this.term = term;
   }

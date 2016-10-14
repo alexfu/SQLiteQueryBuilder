@@ -10,7 +10,7 @@ public class SelectWhereBuilder extends SegmentBuilder {
   private Builder prefix;
   private String condition;
 
-  public SelectWhereBuilder(Builder prefix, String condition) {
+  SelectWhereBuilder(Builder prefix, String condition) {
     this.condition = condition;
     this.prefix = prefix;
   }
